@@ -7,6 +7,7 @@
 #define PROJECT_NAME    "virtual_cricket"
 
 /* Prototypes for all the test functions */
+void test_defineplayers(void);
 void test_validateID(void);
 void test_checkIDRange(void);
 void test_welcome(void);
@@ -30,6 +31,7 @@ int main()
   UNITY_BEGIN();
 
 /* Run Test functions */
+  RUN_TEST(test_defineplayers);
   RUN_TEST(test_validateID);
   RUN_TEST(test_checkIDRange);
   
@@ -47,6 +49,15 @@ int main()
   RUN_TEST(test_median_of_array);
   /* Close the Unity Test Framework */
   return UNITY_END();
+}
+
+/* Test function to check if 8 players are defined*/
+void test_defineplayers(void)
+{
+  TEST_ASSERT_EQUAL("8 PLAYERS DEFINED", defineplayers(8));
+  TEST_ASSERT_EQUAL("ERROR", defineplayers(9));
+  TEST_ASSERT_EQUAL("ERROR", defineplayers(7));
+  TEST_ASSERT_EQUAL("ERROR", defineplayers(0));
 }
 
 /* Test function to check validateID */ 
@@ -85,16 +96,6 @@ void test_checktossChoice(void)
 
 void test_displayPoolPlayers(void)
 {
-    char* player[8];
-    player[0] = "Virat";
-    player[1] = "Rohit";
-    player[2] = "Dhoni";
-    player[3] = "Pant";
-    player[4] = "KLRahul";
-    player[5] = "Raina";
-    player[6] = "Jadeja";
-    player[7] = "Sachin";
-    
     TEST_ASSERT_EQUAL(SUCCESS,displayPoolPlayers(8));
     TEST_ASSERT_EQUAL(FAILURE,displayPoolPlayers(-1));
     TEST_ASSERT_EQUAL(FAILURE,displayPoolPlayers(0));
