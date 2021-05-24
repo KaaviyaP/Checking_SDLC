@@ -60,11 +60,11 @@ int validateInnings() {
             printf("\t\t\t\t|                                                                                               |\n");
             printf("\t\t\t\t|====================================== FIRST-INNINGS-ENDS =====================================|\n");
             printf("\t\t\t\t|_________________________________|\n");
-            printf("\t\t\t\t|==============================  %d  ===============================|\n",battingTeam_teamName);
+            printf("\t\t\t\t|==============================  %s  ===============================|\n",battingTeam_teamName);
             printf("\t\t\t\t\t\t\t  %d  -  %d \n",battingTeam_totalRunsScored,battingTeam_wicketsLost);
             //printf("\t\t\t\t\t\t\t  %d  -  %d \n",battingTeam_totalRunsScored,battingTeam_wicketsLost);
             printf("\n\t\t\t\t\t\t!!! RESULT !!!");
-            printf("\n\t\t\t\t %d  needs to  score  %d   runs" ,bowlingTeam_teamName,battingTeam_totalRunsScored + 1);
+            printf("\n\t\t\t\t %s  needs to  score  %d   runs" ,bowlingTeam_teamName,battingTeam_totalRunsScored + 1);
             printf(" in  %d  balls \n",maxBallss);
             return 0;
 
@@ -73,14 +73,14 @@ int validateInnings() {
         else {
             
             if (battingTeam_totalRunsScored > bowlingTeam_totalRunsScored) {	
-                printf(" %d WON THE MATCH \n\n",battingTeam_teamName);
+                printf(" %s WON THE MATCH \n\n",battingTeam_teamName);
 
         	    return 0;
             } 
             else if (battingTeam_wicketsLost == playersPerTeamm || bowlingTeam_totalBallsBowled == maxBallss) {
             
                 if (battingTeam_totalRunsScored < bowlingTeam_totalRunsScored) {
-            	printf("%d  WON THE MATCH  \n\n",bowlingTeam_teamName);
+            	printf("%s  WON THE MATCH  \n\n",bowlingTeam_teamName);
             	
             } 
             else {
@@ -92,36 +92,7 @@ int validateInnings() {
     
     return 1;
 }
-/*
-void showMatchSummary() {
-    printf("\t\t\t\t ||| MATCH ENDS ||| \n\n");
-    printf(" %d   %d   - %d   ( %d ) \n",battingTeam->teamName,battingTeam->totalRunsScored,battingTeam->wicketsLost,bowlingTeam->totalBallsBowled);
-    printf("\t\t\t\t========================================== \n");
-    printf("\t\t\t\t| PLAYER \t BATTING \t BOWLING | \n");
-    for (int j = 0; j < playersPerTeamm; j++) {
-    	Player player = battingTeam->players[j];
-        printf("\t\t\t\t|----------------------------------------|\n");
-    	printf("\t\t\t\t|----------------------------------------|\n");
-    	printf("\t\t\t\t| " << "[" << j << "] " << player.name << "  \t ";
-        cout << player.runsScored << "(" << player.ballsPlayed << ") \t\t ";
-		cout << player.ballsBowled << "-" << player.runsGiven << "-";
-		cout << player.wicketsTaken << "\t |" << "\n";
-    }
-    cout << "\t\t\t\t==========================================" << "\n\n";
-    cout << bowlingTeam->teamName << " " << bowlingTeam->totalRunsScored << "-" << bowlingTeam->wicketsLost << " (" << battingTeam->totalBallsBowled << ")" << "\n";
-    cout << "\t\t\t\t==========================================" << "\n";
-    cout << "\t\t\t\t| PLAYER \t BATTING \t BOWLING |" << "\n";
-    for (int i = 0; i < playersPerTeamm; i++) {
-    	Player player = bowlingTeam->players[i];
-        cout << "\t\t\t\t|----------------------------------------|" << "\n";
-        cout << "\t\t\t\t| " << "[" << i << "] " << player.name << "  \t ";
-        cout << player.runsScored << "(" << player.ballsPlayed << ") \t\t ";
-        cout << player.ballsBowled << "-" << player.runsGiven << "-";
-		cout << player.wicketsTaken << "\t |" << "\n";
-    }
-    printf("\t\t\t\t==========================================\n\n");
-}
-*/
+
 
 
 /**
@@ -310,7 +281,18 @@ void rivalGame(){
       }
     }
   ans=((long long)num_of_stacks)*(num_of_stacks-1)/2-ans;
-  printf("%lld",ans);
+  printf("\n|==========================RIVAL GAME==================================|\n");
+  printf("\nRIVAL GAME started between teams: %s and %s\n",battingTeam_teamName,bowlingTeam_teamName);
+  printf("\nPlayers chosen from either teams are %s and %s\n",batsman_name,bowler_name);
+  
+  if((ans)>=num_of_stacks && num_of_stacks>0){
+
+  printf("|=====%s won the game from %s",batsman_name,battingTeam_teamName);
+  }
+  else
+  {
+   printf("|=====%s won the game from %s",bowler_name,bowlingTeam_teamName);
+  }
   free(dyn_ptr);free(ddyn_ptr);
   free(dseven);free(dsodd);
   free(sort_even),free(sort_odd);
