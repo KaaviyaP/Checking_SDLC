@@ -87,27 +87,32 @@ player p8;
 error_t defineplayers(int totalPlayers)
 {   
 
-
+    int i=0;
     strcpy(p1.name, "Virat");
     p1.id=1;
     p1.available=1;
+        i++
  
     strcpy(p2.name, "Rohit");
     p2.id=2;
     p2.available=1;
+    i++;
 
     strcpy(p3.name, "Dhoni");
     p3.id=3;
     p3.available=1;
+    i++;
 
     strcpy(p4.name, "Pant");
     p4.id=4;
     p4.available=1;
-
+    i++;
+        
     strcpy(p5.name, "KLRahul");
     p5.id=5;
     p5.available=1;
-
+    i++;
+        
     strcpy(p6.name, "Raina");
     p6.id=6;
     p6.available=1;
@@ -115,12 +120,13 @@ error_t defineplayers(int totalPlayers)
     strcpy(p7.name, "Jadeja");
     p7.id=7;
     p7.available=1;
-
+    i++;
+        
     strcpy(p8.name, "Sachin");
     p8.id=8;
     p8.available=1;
-
-    if(totalPlayers==8)
+    i++;
+    if(totalPlayers==i)
     {
          return SUCCESS;
     }
