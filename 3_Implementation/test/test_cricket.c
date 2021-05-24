@@ -2,8 +2,6 @@
 #include "unity.h"
 #include "virtual_cricket.h"
 
-
-#include "virtual_cricket.h"
 #define PROJECT_NAME    "virtual_cricket"
 
 /* Prototypes for all the test functions */
