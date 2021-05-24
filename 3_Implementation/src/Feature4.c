@@ -18,12 +18,79 @@ int maxBalls = 6;
 int totalPlayers = 11;
 int count=0;
 
+struct players{
+        char name[50];
+        int id;  
+        int runsScored;
+        int ballsPlayed;
+        int ballsBowled;
+        int runsGiven;
+        int wicketsTaken;
+};
+struct teamA{
+    struct players PA1;
+    struct players PA2;
+    struct players PA3;
+    struct players PA4;
+    struct players captainA;
+};
+struct teamB{
+    struct players PB1;
+    struct players PB2;
+    struct players PB3;
+    struct players PB4;
+    struct players captainB;
+};
+
+struct teams{
+    struct teamA A;
+    struct teamB B;
+};
+
+struct Tuple {
+
+    char wonteam[50],choice[50];
+};
+struct Tuple toss;
+
 void startFirstInnings(char TeamA[4][50],char TeamB[4][50],int maxballs);
 void initialisingPlayers(char TeamA[4][50],char TeamB[4][50],int maxballs);
 void startSecondInnings(char TeamB[4][50],char TeamA[4][50],int maxballs );
 int letsPlay(char TeamA[4][50],char TeamB[4][50],char batsman[50],char bowler[50],int maxballs);
 int bat(char TeamA[4][50],char TeamB[4][50],char batsman[50],char bowler[50]);
+void start(struct teams t,struct Tuple toss);
 
+void start(struct teams t,struct Tuple toss)
+{
+	 char TeamA[4][50];
+    char TeamB[4][50];
+    strcpy(TeamA[0],t.A.PA1.name);
+    strcpy(TeamA[1],t.A.PA2.name);
+    strcpy(TeamA[2],t.A.PA3.name);
+    strcpy(TeamA[3],t.A.PA4.name);
+
+    strcpy(TeamB[0],t.B.PB1.name);
+    strcpy(TeamB[1],t.B.PB2.name);
+    strcpy(TeamB[2],t.B.PB3.name);
+    strcpy(TeamB[3],t.B.PB4.name);
+    
+    if(strcmp(toss.wonteam,"TeamA")==0 && strcmp(toss.choice,"BAT")==0)
+    {
+        startFirstInnings(TeamA,TeamB,maxBalls);
+    }
+    else if(strcmp(toss.wonteam,"TeamA")==0 && (strcmp(toss.choice,"BOWL")==0))
+    {
+        startFirstInnings(TeamB,TeamA,maxBalls);
+    }
+    else if(strcmp(toss.wonteam,"TeamB")==0 && strcmp(toss.choice,"BAT")==0)
+    {
+        startFirstInnings(TeamB,TeamA,maxBalls);
+    }
+    else 
+    {
+        startFirstInnings(TeamA,TeamB,maxBalls);
+    }
+}
 
 
 
@@ -47,7 +114,7 @@ void initialisingPlayers(char TeamA[4][50],char TeamB[4][50],int maxballs){
     strcpy(batsman,TeamA[0]);
     strcpy(bowler,TeamB[0]);
 	printf("Ready To bat %s\n",batsman);
-	printf("Ready To bowler %s\n",bowler);
+	printf("Ready To bowl %s\n",bowler);
 	letsPlay(TeamA,TeamB,batsman,bowler,maxballs);
     
 }
@@ -61,14 +128,19 @@ void startSecondInnings(char TeamA[4][50],char TeamB[4][50],int maxballs ) {
     printf("\t\t\t\tPress Enter\n");
     while((getchar())!='\n');
     netbatsmanrun=0;
-    neteamrun=0;
-    ballsplayed=0;
+	batsmanrun=0;
+	neteamrun=0;
+	ballsplayed=0;
+	bowlsbawled=0;
+	runGiven=0;
+	wicketlost=0;
+	wickettaken=0;
     count++;
     initialisingPlayers(TeamA,TeamB,maxballs);
 }
 
 int letsPlay(char TeamA[4][50],char TeamB[4][50],char batsman[50],char bowler[50],int maxballs){
-	int teamtotalscore=0,i;
+	int i;
 	if(maxballs>0){
 		for(i=0;i<maxballs;i++){
 		
@@ -77,7 +149,7 @@ int letsPlay(char TeamA[4][50],char TeamB[4][50],char batsman[50],char bowler[50
         while((getchar())!='\n');
         if(count>0)
 		{
-		batsman=TeamB[wicketlost-1];}
+		batsman=TeamB[wicketlost];}
 		else
 		{
 		batsman=TeamA[wicketlost];	
@@ -94,7 +166,7 @@ printf("\t\t\t\tTEAM B SCORED %d\n",neteamrun);//displaying individual batsman r
 int bat(char TeamA[4][50],char TeamB[4][50],char batsman[50],char bowler[50])
 {
 
-printf("\t\t\t\tpress Enter to start the spell\n");
+printf("\t\t\t\tpress Enter to start batting\n");
  while((getchar())!='\n');
 //batsman status
 srand(time(NULL));
