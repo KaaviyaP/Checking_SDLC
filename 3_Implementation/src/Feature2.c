@@ -84,7 +84,7 @@ player p6;
 player p7;
 player p8;
 
-char *defineplayers(int totalPlayers)
+error_t defineplayers(int totalPlayers)
 {   
 
 
@@ -119,13 +119,14 @@ char *defineplayers(int totalPlayers)
     strcpy(p8.name, "Sachin");
     p8.id=8;
     p8.available=1;
+
     if(totalPlayers==8)
     {
-        return "8 PLAYERS DEFINED";
+         return SUCCESS;
     }
     else
     {
-        return "ERROR";
+        return FAILURE;
     }
    
 }
