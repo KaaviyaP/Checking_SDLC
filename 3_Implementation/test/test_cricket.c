@@ -10,6 +10,9 @@
 void test_validateID(void);
 void test_checkIDRange(void);
 
+void test_checktossTeam(void);
+void test_checktossChoice(void);
+
 /* Required by the unity test framework */
 void setUp(){}
 /* Required by the unity test framework */
@@ -24,6 +27,9 @@ int main()
 /* Run Test functions */
   RUN_TEST(test_validateID);
   RUN_TEST(test_checkIDRange);
+  
+  RUN_TEST(test_validateID);
+  RUN_TEST(test_checktossChoice);
 
 
   /* Close the Unity Test Framework */
@@ -42,5 +48,19 @@ void test_checkIDRange(void)
   TEST_ASSERT_EQUAL(1,checkIDRange(5));
   TEST_ASSERT_EQUAL(0,checkIDRange(-1));
   TEST_ASSERT_EQUAL(0,checkIDRange(11));
+}
+
+void test_checktossTeam(void)
+{
+  TEST_ASSERT_EQUAL(1,checktossTeam("TeamA"));
+  TEST_ASSERT_EQUAL(1,checktossTeam("TeamB"));
+  TEST_ASSERT_EQUAL(0,checktossTeam("TeamC"));                                                                    
+}
+
+void test_checktossChoice(void)
+{
+  TEST_ASSERT_EQUAL(1,checktossChoice("BAT"));
+  TEST_ASSERT_EQUAL(1,checktossChoice("BOWL"));
+  TEST_ASSERT_EQUAL(1,checktossChoice("XYZ"));
 }
 
