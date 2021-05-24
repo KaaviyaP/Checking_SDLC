@@ -36,11 +36,6 @@ RUN_TEST(test_checktossChoice);
   RUN_TEST(test_welcome);
   RUN_TEST(test_displayPoolPlayers);
   
-  
-  RUN_TEST(test_sort_array);
-  RUN_TEST(test_merge_array);
-  RUN_TEST(test_get_position);
-  RUN_TEST(test_median_of_array);
   /* Close the Unity Test Framework */
   return UNITY_END();
 }
@@ -96,53 +91,3 @@ void test_displayPoolPlayers(void)
     TEST_ASSERT_EQUAL(FAILURE,displayPoolPlayers(player,0));
 }
 
-void test_sort_array(void) {
-  int s1[2]={2,2};
-  int s2[2]={1,1};
-  int s3[2]={0,0};
-  TEST_ASSERT_EQUAL(SUCCESS,sort_array(s1,s2,3,s3));
-  /*TEST_ASSERT_EQUAL(NULL,sort_array(2 2,1 1,3,0 0));
-  TEST_ASSERT_EQUAL(NULL,sort_array(2 2,1 1,2,0 0));
-  TEST_ASSERT_EQUAL(NULL,sort_array(2 0,1 0,1,0 0));
-  TEST_ASSERT_EQUAL(NULL,sort_array(1 1,1 1,2,0 0));
-  TEST_ASSERT_EQUAL(NULL,sort_array(1 0,1 0,1,0 0));*/
-  
-  /* Dummy fail*/
-  //TEST_ASSERT_EQUAL(15000, sort_array(7500, 7500));
-}
-
-void test_merge_array(void) {
-  int a1[2]={2,2};
-  int a2[2]={1,0};
-  int a3[2]={1,1};
-  int a4[2]={2,1};
-  int a5[2]={2,2};
-  int a6[2]={0,0};
-  TEST_ASSERT_EQUAL(SUCCESS,merge_array(a1,a1,a2,a3,a4,a2,1,1,a6));
-/* TEST_ASSERT_EQUAL(NULL,merge_array(2 2,2 2,1 0,1 1,2 1,1 0,1,1,0 0));
- TEST_ASSERT_EQUAL(NULL,merge_array(1 1,1 0,1 0,1 1,1 0,1 0,1,1,0 0)); */
-  //TEST_ASSERT_EQUAL(merge_array(2 2,1 2,1 1,1 1,1 2,2 1,2,1,0 0));
-  /* Dummy fail*/
-  //TEST_ASSERT_EQUAL(100, merge_array(1000, 900));
-}
-
-void test_get_position(void) {
-  int t1[2]={0,0};
-  TEST_ASSERT_EQUAL(0, get_position(t1,0,0));
-  /*TEST_ASSERT_EQUAL(0, get_position(0 0,0,0));
-  TEST_ASSERT_EQUAL(1, get_position(2 1,2,0));
-  TEST_ASSERT_EQUAL(0, get_position(1 2,1,0));*/
-  /* Dummy fail*/
- // TEST_ASSERT_EQUAL(10, get_position(2, 5));
-}
-
-void test_median_of_array(void) {
-  int m1[2]={1,2};
-  TEST_ASSERT_EQUAL(1, median_of_array(m1,2));
- /* TEST_ASSERT_EQUAL(1, median_of_array(1 2,2));
-  TEST_ASSERT_EQUAL(0, median_of_array(1 2,0));
-  TEST_ASSERT_EQUAL(0, median_of_array(0 0,1));
-  TEST_ASSERT_EQUAL(0, median_of_array(0 0,0));*/
-  /* Dummy fail*/
-  //TEST_ASSERT_EQUAL(1, median_of_array(2, 2));
-}
