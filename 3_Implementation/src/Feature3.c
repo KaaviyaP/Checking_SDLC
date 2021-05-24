@@ -8,10 +8,13 @@
  * @copyright Copyright (c) 2021
  * 
  */
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 #include "virtual_cricket.h"
+
+// Structure to store all the player details
 struct players{
         char name[50];
         int id;  
@@ -21,6 +24,8 @@ struct players{
         int runsGiven;
         int wicketsTaken;
 };
+
+//Structure to store all the Team A details
 struct teamA{
     struct players PA1;
     struct players PA2;
@@ -28,6 +33,8 @@ struct teamA{
     struct players PA4;
     struct players captainA;
 };
+
+//Structure to store all the Team B details
 struct teamB{
     struct players PB1;
     struct players PB2;
@@ -36,38 +43,19 @@ struct teamB{
     struct players captainB;
 };
 
+//Structure for Team A,B
 struct teams{
     struct teamA A;
     struct teamB B;
 };
-int checktossTeam(char t[50])
-{
-  if((strcmp(t,"TeamA")==0) || (strcmp(t,"TeamB")==0)){
-            return 1;
-        }
-  else{
-            return 0;
-        }
-}
 
-int checktossChoice(char c[10])
-{
-   if((strcmp(c,"BAT")==0) || (strcmp(c,"BOWL")==0))
-        {
-            return 1;
-        }
-        else{
-            return 0;
-        }
-}
-
+// Structure for storing Toss winner and winner's choice
 struct Tuple {
 
     char wonteam[50],choice[50];
 };
-struct Tuple GetPlayerToss(char TeamA[],char TeamB[],struct teams t);
-char* getChoice(char winner[],char loser[]);
 
+// Function to return results of the toss
 struct Tuple GetPlayerToss(char TeamA[],char TeamB[],struct teams t)
 {
     
@@ -120,11 +108,11 @@ struct Tuple GetPlayerToss(char TeamA[],char TeamB[],struct teams t)
    printf("%s Won the Toss\n",TeamB);
    sprintf(retstr.wonteam, "%s", TeamB);
    sprintf(retstr.choice, "%s", getChoice(TeamB,TeamA));
-     
-    
   }
   return retstr;
 }
+
+// Function to declare the winner's and loser's state of playing
 char* getChoice(char winner[],char loser[])
 {
     int batorbowl;
@@ -148,5 +136,28 @@ char* getChoice(char winner[],char loser[])
          printf("-------------------Invalid choice-----------------------");
           }
      return "";
+}
+
+// Function to check the Teams(A/B) in toss
+int checktossTeam(char t[50])
+{
+  if((strcmp(t,"TeamA")==0) || (strcmp(t,"TeamB")==0)){
+            return 1;
+        }
+  else{
+            return 0;
+        }
+}
+
+// Function to check the choice of Batting/Bowling after toss
+int checktossChoice(char c[10])
+{
+   if((strcmp(c,"BAT")==0) || (strcmp(c,"BOWL")==0))
+        {
+            return 1;
+        }
+        else{
+            return 0;
+        }
 }
 
