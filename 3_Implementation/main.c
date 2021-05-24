@@ -5,8 +5,6 @@
 #include<stdlib.h>
 #include "virtual_cricket.h"
 
-
-
 struct players{
         char name[50];
         int id;  
@@ -42,64 +40,47 @@ int id;
 int available;
 } player;
 
-
 struct teams createTeam();
-
 struct Tuple {
-
     char wonteam[50],choice[50];
 };
 
-void showScoreCard();
-void validateInnings();
- void rivalGame();
-void startFirstInnings(char TeamA[4][50],char TeamB[4][50],int maxBalls);
+
+  void startFirstInnings(char TeamA[4][50],char TeamB[4][50],int maxballs);
+  int validateInnings();
+  void rivalGame();
+  void showScoreCard();
+
 int main()
 {      
 
     int playersPerTeam=4;
     int maxBalls=6;
-    int totalPlayers=16;
-    char* player[16];
-    player[0] = "Virat";
-    player[1] = "Rohit";
-    player[2] = "Dhoni";
-    player[3] = "Pant";
-    player[4] = "KLRahul";
-    player[5] = "Raina";
-    player[6] = "Jadeja";
-    player[7] = "Sachin";
-    player[8] = "Karthik";
-    player[9] = "BKumar";
-    player[10] = "Bumrah";
-    player[11] = "Yuvraj";
-    player[12]= "Dhawan";
-    player[13] = "Chahal";
-    player[14] = "Hardik";
-    player[15] = "Shami";
+    int totalPlayers=8;
+   
     welcome();
     printf("\t\t\t\tPress Enter to display list of all players\n");
     while((getchar())!='\n');
-    displayPoolPlayers(player,totalPlayers);
+    displayPoolPlayers(totalPlayers);
    
- 
-
+    //Feature 2
     defineplayers();
     struct teams t;
     t =createTeam();
     displayTeam();
    
-
+    //Feature 3
     int r,c;
     struct Tuple toss;
-  
     r=rand() %2;
-   
     toss=GetPlayerToss("Team A","Team B",t);
     printf("\n**************************************\n");
-     printf("\n%s\n",toss.wonteam);
-     printf("%s\n",toss.choice);
+    printf("\n%s\n",toss.wonteam);
+    printf("%s\n",toss.choice);
      
+
+    //Feature 4
+  
     char TeamA[4][50];
     char TeamB[4][50];
     strcpy(TeamA[0],t.A.PA1.name);
@@ -112,8 +93,6 @@ int main()
     strcpy(TeamB[2],t.B.PB3.name);
     strcpy(TeamB[3],t.B.PB4.name);
     
-
-   
     if(toss.wonteam=="TeamA" && toss.choice=="BAT")
     {
         startFirstInnings(TeamA,TeamB,maxBalls);
@@ -130,6 +109,9 @@ int main()
     {
         startFirstInnings(TeamA,TeamB,maxBalls);
     }
+
+
+    //Feature 5 
     showScoreCard();
     validateInnings();
     rivalGame();
