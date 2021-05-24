@@ -54,10 +54,11 @@ int main()
 /* Test function to check if 8 players are defined*/
 void test_defineplayers(void)
 {
-  TEST_ASSERT_EQUAL("8 PLAYERS DEFINED", defineplayers(8));
-  TEST_ASSERT_EQUAL("ERROR", defineplayers(9));
-  TEST_ASSERT_EQUAL("ERROR", defineplayers(7));
-  TEST_ASSERT_EQUAL("ERROR", defineplayers(0));
+
+  TEST_ASSERT_EQUAL(FAILURE,defineplayers(0));
+  TEST_ASSERT_EQUAL(SUCCESS,defineplayers(8));
+  TEST_ASSERT_EQUAL(FAILURE,defineplayers(9));
+  TEST_ASSERT_EQUAL(FAILURE,defineplayers(7));
 }
 
 /* Test function to check validateID */ 
