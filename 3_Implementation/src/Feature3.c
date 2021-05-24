@@ -113,7 +113,7 @@ int checktossTeam(char t[50])
 
 int checktossChoice(char c[10])
 {
-   if(c=="BAT" || c=="BOWL")
+   if((strcmp(c,"BAT")==0) || (strcmp(c,"BOWL")==0))
         {
             return 1;
         }
