@@ -229,20 +229,29 @@ struct teams createTeam()
     return team;
 }
 
-void displayTeam()
-{
+error_t displayTeam(int n)
+{   
+    int initial=0;
     printf("TEAM A :\n");
     for(int i=0;i<4;i++)
     {
         printf("%s\n", pool1+i);
+        initial++;
     }
     printf("\n");
     printf("TEAM B :\n");
     for(int i=4;i<8;i++)
     {
         printf("%s\n", pool1+i);
+        initial++;
     }
     printf("\n");
+    if(initial==n){
+     return SUCCESS;
+    }
+    else{
+        return FAILURE;
+    }
    
 }
 
