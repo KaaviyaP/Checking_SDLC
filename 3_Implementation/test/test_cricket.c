@@ -81,17 +81,17 @@ void test_checkIDRange(void)
   TEST_ASSERT_EQUAL(1,checkIDRange(8));
   TEST_ASSERT_EQUAL(1,checkIDRange(1));
   TEST_ASSERT_EQUAL(1,checkIDRange(5));
-  TEST_ASSERT_EQUAL(0,checkIDRange(-1));
-  TEST_ASSERT_EQUAL(0,checkIDRange(11));
+  TEST_ASSERT_EQUAL(-1,checkIDRange(-1));
+  TEST_ASSERT_EQUAL(-1,checkIDRange(11));
 }
 
 /*Test Function to check id 8 player names are displayed*/
 void test_displayTeam(void)
 {
   TEST_ASSERT_EQUAL(SUCCESS,displayTeam(8)); 
-  TEST_ASSERT_EQUAL(FAILURE,displayTeam(1)); 
+  TEST_ASSERT_EQUAL(FAILURE,displayTeam(7)); 
   TEST_ASSERT_EQUAL(FAILURE,displayTeam(-1)); 
-  TEST_ASSERT_EQUAL(FAILURE,displayTeam(0)); 
+  TEST_ASSERT_EQUAL(FAILURE,displayTeam(9)); 
 }
 
 void test_welcome(void)
