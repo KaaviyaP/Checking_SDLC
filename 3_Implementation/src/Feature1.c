@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include<time.h>
+
 #include "virtual_cricket.h"
 
 struct players{
@@ -42,7 +43,6 @@ return t;
 
 }
 
-char* player[16];
 
 error_t welcome(){ 
     
@@ -64,11 +64,9 @@ error_t welcome(){
     return SUCCESS;
 }
 
-   
-
-error_t displayPoolPlayers(int totalPlayers) {
-    
-    char* player[8];
+error_t displayPoolPlayers(int totalPlayers) 
+{
+    char* player[8];   
     player[0] = "Virat";
     player[1] = "Rohit";
     player[2] = "Dhoni";
@@ -77,7 +75,6 @@ error_t displayPoolPlayers(int totalPlayers) {
     player[5] = "Raina";
     player[6] = "Jadeja";
     player[7] = "Sachin";
-    
      
     if(totalPlayers<=0)
     {
@@ -98,7 +95,8 @@ error_t displayPoolPlayers(int totalPlayers) {
     return SUCCESS;
 }
 
-int takeIntegerOnly() {
+int takeIntegerOnly() 
+{
     int i; 
         
     while(scanf("%d", &i)==0) //if scanf failed to scan an integer
