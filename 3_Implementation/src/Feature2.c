@@ -84,7 +84,7 @@ player p6;
 player p7;
 player p8;
 
-const char* defineplayers(int totalPlayers)
+char *defineplayers(int totalPlayers)
 {   
 
 
