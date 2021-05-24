@@ -41,6 +41,19 @@ int getID(int lower, int upper, int count)
         return id;
 }
 
+int checkIDRange(int x)
+{
+    if(x>=1 && x<=8)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+    
+}
+
 int validateID(int p_id,int x,int availibility)
 {
     if(p_id==x && availibility==1)
