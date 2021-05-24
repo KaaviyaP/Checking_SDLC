@@ -82,7 +82,7 @@ error_t defineplayers(int totalPlayers);
  * @brief 
  * 
  */
-void displayTeam();
+error_t displayTeam(int n);
 
 /**
  * @brief Get the Player Toss object
