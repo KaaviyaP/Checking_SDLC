@@ -2,7 +2,6 @@
 #include<stdlib.h>
 #include<string.h>
 #include<time.h>
-
 #include "virtual_cricket.h"
 
 struct players{
@@ -43,6 +42,7 @@ return t;
 
 }
 
+char* player[16];
 
 error_t welcome(){ 
     
@@ -64,7 +64,20 @@ error_t welcome(){
     return SUCCESS;
 }
 
-error_t displayPoolPlayers(char* player[],int totalPlayers) {
+   
+
+error_t displayPoolPlayers(int totalPlayers) {
+    
+    char* player[8];
+    player[0] = "Virat";
+    player[1] = "Rohit";
+    player[2] = "Dhoni";
+    player[3] = "Pant";
+    player[4] = "KLRahul";
+    player[5] = "Raina";
+    player[6] = "Jadeja";
+    player[7] = "Sachin";
+    
      
     if(totalPlayers<=0)
     {
