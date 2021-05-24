@@ -91,7 +91,7 @@ error_t defineplayers(int totalPlayers)
     strcpy(p1.name, "Virat");
     p1.id=1;
     p1.available=1;
-        i++
+    i++;
  
     strcpy(p2.name, "Rohit");
     p2.id=2;
@@ -116,7 +116,8 @@ error_t defineplayers(int totalPlayers)
     strcpy(p6.name, "Raina");
     p6.id=6;
     p6.available=1;
-
+    i++;
+        
     strcpy(p7.name, "Jadeja");
     p7.id=7;
     p7.available=1;
@@ -126,6 +127,7 @@ error_t defineplayers(int totalPlayers)
     p8.id=8;
     p8.available=1;
     i++;
+        
     if(totalPlayers==i)
     {
          return SUCCESS;
