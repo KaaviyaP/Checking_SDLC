@@ -5,6 +5,7 @@
 #include<stdlib.h>
 #include "virtual_cricket.h"
 
+// Structure to store all the player details
 struct players{
         char name[50];
         int id;  
@@ -14,6 +15,7 @@ struct players{
         int runsGiven;
         int wicketsTaken;
 };
+//Structure to store all the Team A details
 struct teamA{
     struct players PA1;
     struct players PA2;
@@ -21,6 +23,7 @@ struct teamA{
     struct players PA4;
     struct players captainA;
 };
+//Structure to store all the Team B details
 struct teamB{
     struct players PB1;
     struct players PB2;
@@ -28,12 +31,12 @@ struct teamB{
     struct players PB4;
     struct players captainB;
 };
-
+//Structure for Team A,B
 struct teams{
     struct teamA A;
     struct teamB B;
 };
-  
+
 int getID(int lower, int upper, int count)
 {
         int id = (rand() %
@@ -65,12 +68,12 @@ int validateID(int p_id,int x,int availibility)
     }
 }
 
+//Structure to store Name, ID, Availibility of each player
 typedef struct p {
 char name[50];
 int id;
 int available;
 } player;
-
 
 player p1;
 player p2;
@@ -81,7 +84,7 @@ player p6;
 player p7;
 player p8;
 
-void defineplayers()
+const char* defineplayers(int totalPlayers)
 {   
 
 
@@ -116,7 +119,14 @@ void defineplayers()
     strcpy(p8.name, "Sachin");
     p8.id=8;
     p8.available=1;
-
+    if(totalPlayers==8)
+    {
+        return "8 PLAYERS DEFINED";
+    }
+    else
+    {
+        return "ERROR";
+    }
    
 }
 
