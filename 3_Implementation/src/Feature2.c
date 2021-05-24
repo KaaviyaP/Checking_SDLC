@@ -1,3 +1,13 @@
+/**
+ * @file Feature2.c
+ * @author Kaaviya Perumal()
+ * @brief 
+ * @version 0.1
+ * @date 2021-05-24
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -15,6 +25,7 @@ struct players{
         int runsGiven;
         int wicketsTaken;
 };
+
 //Structure to store all the Team A details
 struct teamA{
     struct players PA1;
@@ -23,6 +34,7 @@ struct teamA{
     struct players PA4;
     struct players captainA;
 };
+
 //Structure to store all the Team B details
 struct teamB{
     struct players PB1;
@@ -31,12 +43,14 @@ struct teamB{
     struct players PB4;
     struct players captainB;
 };
+
 //Structure for Team A,B
 struct teams{
     struct teamA A;
     struct teamB B;
 };
 
+// Function to generate IDs
 int getID(int lower, int upper, int count)
 {
         int id = (rand() %
@@ -44,6 +58,7 @@ int getID(int lower, int upper, int count)
         return id;
 }
 
+// Function to check if IDs are between 1-8
 int checkIDRange(int x)
 {
     if(x>=1 && x<=8)
@@ -57,18 +72,19 @@ int checkIDRange(int x)
     
 }
 
+// Function to validate player IDs
 int validateID(int p_id,int x,int availibility)
 {
-    if(p_id==x && availibility==1 && p_id>=1 && p_id<=8)
+    if(p_id==x && availibility==1)
     {
         return 1;
     }
     else{
-        return -1;
+        return 0;
     }
 }
 
-//Structure to store Name, ID, Availibility of each player
+//Structure to store status of players
 typedef struct p {
 char name[50];
 int id;
@@ -84,51 +100,52 @@ player p6;
 player p7;
 player p8;
 
+// Function to define the 8 players
 error_t defineplayers(int totalPlayers)
 {   
 
-    int i=0;
+    int i1=0;
     strcpy(p1.name, "Virat");
     p1.id=1;
     p1.available=1;
-    i++;
+    i1++;
  
     strcpy(p2.name, "Rohit");
     p2.id=2;
     p2.available=1;
-    i++;
+    i1++;
 
     strcpy(p3.name, "Dhoni");
     p3.id=3;
     p3.available=1;
-    i++;
+    i1++;
 
     strcpy(p4.name, "Pant");
     p4.id=4;
     p4.available=1;
-    i++;
+    i1++;
         
     strcpy(p5.name, "KLRahul");
     p5.id=5;
     p5.available=1;
-    i++;
+    i1++;
         
     strcpy(p6.name, "Raina");
     p6.id=6;
     p6.available=1;
-    i++;
+    i1++;
         
     strcpy(p7.name, "Jadeja");
     p7.id=7;
     p7.available=1;
-    i++;
+    i1++;
         
     strcpy(p8.name, "Sachin");
     p8.id=8;
     p8.available=1;
-    i++;
+    i1++;
         
-    if(totalPlayers==i)
+    if(totalPlayers==i1)
     {
          return SUCCESS;
     }
@@ -140,9 +157,10 @@ error_t defineplayers(int totalPlayers)
 }
 
 struct teams team;
-
 struct teams createTeam();
 char pool1[8][50];
+
+// Function to create 2 Teams with 4 player each
 struct teams createTeam()
 {
     printf("Creating Teams. Please wait....\n\n");
@@ -204,6 +222,9 @@ struct teams createTeam()
         }  
     }
     
+    
+    
+
     team.A.PA1.id=1;
     strcpy(team.A.PA1.name, pool1[0]);
     team.A.PA2.id=2;
@@ -215,6 +236,7 @@ struct teams createTeam()
     team.A.captainA.id=1;
     strcpy(team.A.captainA.name, pool1[0]);
     
+
     team.B.PB1.id=5;
     strcpy(team.B.PB1.name, pool1[4]);
     team.B.PB2.id=6;
@@ -227,8 +249,10 @@ struct teams createTeam()
     strcpy(team.B.captainB.name, pool1[4]);
 
     return team;
+
 }
 
+// Function to display teams
 error_t displayTeam(int n)
 {   
     int initial=0;
@@ -254,5 +278,4 @@ error_t displayTeam(int n)
     }
    
 }
-
 
