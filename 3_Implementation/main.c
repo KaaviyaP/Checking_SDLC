@@ -45,6 +45,7 @@ struct Tuple {
 error_t welcome();
 error_t displayPoolPlayers(int totalPlayers);
 error_t defineplayers(int totalPlayers);
+error_t displayTeam(int n);
 struct teams createTeam();
 void start();
 void showScoreCard();
@@ -66,7 +67,7 @@ int main()
     defineplayers(totalPlayers);
     struct teams t;
     t =createTeam();
-    displayTeam();
+    displayTeam(8);
    
     //Feature 3
     int r,c;
