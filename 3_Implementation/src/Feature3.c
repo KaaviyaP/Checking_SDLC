@@ -100,6 +100,30 @@ struct Tuple GetPlayerToss(char TeamA[],char TeamB[],struct teams t)
   }
   return retstr;
 }
+
+int checktossTeam(char t[10])
+{
+  
+  if(t=="TeamA" || t=="TeamB")
+        {
+            return 1;
+        }
+        else{
+            return 0;
+        }
+}
+
+int checktossChoice(char c[10])
+{
+   if(c=="BAT" || c=="BOWL")
+        {
+            return 1;
+        }
+        else{
+            return 0;
+        }
+}
+
 char* getChoice(char winner[],char loser[])
 {
     int batorbowl;
