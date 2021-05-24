@@ -88,10 +88,10 @@ void test_checkIDRange(void)
 /*Test Function to check id 8 player names are displayed*/
 void test_displayTeam(void)
 {
-  TEST_ASSERT_EQUAL(SUCCESS,displayTeam(0)); 
-  TEST_ASSERT_EQUAL(FAILURE,displayTeam(8)); 
-  TEST_ASSERT_EQUAL(FAILURE,displayTeam(-1)); 
+  TEST_ASSERT_EQUAL(SUCCESS,displayTeam(8)); 
   TEST_ASSERT_EQUAL(FAILURE,displayTeam(1)); 
+  TEST_ASSERT_EQUAL(FAILURE,displayTeam(-1)); 
+  TEST_ASSERT_EQUAL(FAILURE,displayTeam(0)); 
 }
 
 void test_welcome(void)
