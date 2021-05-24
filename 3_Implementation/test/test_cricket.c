@@ -61,6 +61,6 @@ void test_checktossChoice(void)
 {
   TEST_ASSERT_EQUAL(1,checktossChoice("BAT"));
   TEST_ASSERT_EQUAL(1,checktossChoice("BOWL"));
-  TEST_ASSERT_EQUAL(1,checktossChoice("XYZ"));
+  TEST_ASSERT_EQUAL(0,checktossChoice("XYZ"));
 }
 
