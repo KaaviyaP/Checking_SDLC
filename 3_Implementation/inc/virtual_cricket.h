@@ -69,7 +69,7 @@ int validateID(int p_id,int x,int availibility);
  * @brief 
  * 
  */
-const char* defineplayers(int totalPlayers);
+char *defineplayers(int totalPlayers);
 
 /**
  * @brief Create a Team object
