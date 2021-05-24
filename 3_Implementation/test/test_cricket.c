@@ -3,17 +3,12 @@
 #include "virtual_cricket.h"
 
 
-#include "unity.h"
-#include "virtual_cricket.h"
-
-
 #include "virtual_cricket.h"
 #define PROJECT_NAME    "virtual_cricket"
 
 /* Prototypes for all the test functions */
 void test_validateID(void);
-
-
+void test_checkIDRange(void);
 
 /* Required by the unity test framework */
 void setUp(){}
@@ -28,6 +23,7 @@ int main()
 
 /* Run Test functions */
   RUN_TEST(test_validateID);
+  RUN_TEST(test_checkIDRange);
 
 
   /* Close the Unity Test Framework */
@@ -39,6 +35,12 @@ void test_validateID(void) {
   TEST_ASSERT_EQUAL(1, validateID(1,1,1));
 }
 
-
-
+void test_checkIDRange(void)
+{
+  TEST_ASSERT_EQUAL(1,checkIDRange(8));
+  TEST_ASSERT_EQUAL(1,checkIDRange(1));
+  TEST_ASSERT_EQUAL(1,checkIDRange(5));
+  TEST_ASSERT_EQUAL(0,checkIDRange(-1));
+  TEST_ASSERT_EQUAL(0,checkIDRange(11));
+}
 
