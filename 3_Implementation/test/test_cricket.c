@@ -13,7 +13,10 @@ void test_welcome(void);
 void test_checktossTeam(void);
 void test_checktossChoice(void);
 void test_displayPoolPlayers(void);
-
+void test_sort_array(void);
+void test_merge_array(void);
+void test_get_position(void);
+void test_median_of_array(void);
 
 /* Required by the unity test framework */
 void setUp(){}
