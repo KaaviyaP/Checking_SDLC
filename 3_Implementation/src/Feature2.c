@@ -59,12 +59,12 @@ int checkIDRange(int x)
 
 int validateID(int p_id,int x,int availibility)
 {
-    if(p_id==x && availibility==1)
+    if(p_id==x && availibility==1 && p_id>=1 && p_id<=8)
     {
         return 1;
     }
     else{
-        return 0;
+        return -1;
     }
 }
 
@@ -204,9 +204,6 @@ struct teams createTeam()
         }  
     }
     
-    
-    
-
     team.A.PA1.id=1;
     strcpy(team.A.PA1.name, pool1[0]);
     team.A.PA2.id=2;
@@ -218,7 +215,6 @@ struct teams createTeam()
     team.A.captainA.id=1;
     strcpy(team.A.captainA.name, pool1[0]);
     
-
     team.B.PB1.id=5;
     strcpy(team.B.PB1.name, pool1[4]);
     team.B.PB2.id=6;
@@ -231,7 +227,6 @@ struct teams createTeam()
     strcpy(team.B.captainB.name, pool1[4]);
 
     return team;
-
 }
 
 void displayTeam()
@@ -248,7 +243,6 @@ void displayTeam()
         printf("%s\n", pool1+i);
     }
     printf("\n");
-
    
 }
 
