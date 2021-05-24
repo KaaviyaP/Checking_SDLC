@@ -95,9 +95,9 @@ void test_displayPoolPlayers(void)
     player[6] = "Jadeja";
     player[7] = "Sachin";
     
-    TEST_ASSERT_EQUAL(SUCCESS,displayPoolPlayers(player,8));
-    TEST_ASSERT_EQUAL(FAILURE,displayPoolPlayers(player,-1));
-    TEST_ASSERT_EQUAL(FAILURE,displayPoolPlayers(player,0));
+    TEST_ASSERT_EQUAL(SUCCESS,displayPoolPlayers(8));
+    TEST_ASSERT_EQUAL(FAILURE,displayPoolPlayers(-1));
+    TEST_ASSERT_EQUAL(FAILURE,displayPoolPlayers(0));
 }
 
 void test_sort_array(void) {
