@@ -10,6 +10,7 @@
 void test_defineplayers(void);
 void test_validateID(void);
 void test_checkIDRange(void);
+void test_displayTeam(void);
 void test_welcome(void);
 void test_checktossTeam(void);
 void test_checktossChoice(void);
@@ -34,6 +35,7 @@ int main()
   RUN_TEST(test_defineplayers);
   RUN_TEST(test_validateID);
   RUN_TEST(test_checkIDRange);
+  RUN_TEST(test_displayTeam);
   
   RUN_TEST(test_welcome);
   
@@ -54,12 +56,11 @@ int main()
 /* Test function to check if 8 players are defined*/
 void test_defineplayers(void)
 {
-
-  TEST_ASSERT_EQUAL(FAILURE,defineplayers(0));
   TEST_ASSERT_EQUAL(SUCCESS,defineplayers(8));
+  TEST_ASSERT_EQUAL(FAILURE,defineplayers(0));
+  TEST_ASSERT_EQUAL(FAILURE,defineplayers(-1));
   TEST_ASSERT_EQUAL(FAILURE,defineplayers(9));
   TEST_ASSERT_EQUAL(FAILURE,defineplayers(7));
-  TEST_ASSERT_EQUAL(FAILURE,defineplayers(-1));
 }
 
 /* Test function to check validateID */ 
@@ -74,7 +75,6 @@ void test_validateID(void) {
 
 }
 
-
 /* Test function to check checkIDRange */ 
 void test_checkIDRange(void)
 {
@@ -83,6 +83,15 @@ void test_checkIDRange(void)
   TEST_ASSERT_EQUAL(1,checkIDRange(5));
   TEST_ASSERT_EQUAL(0,checkIDRange(-1));
   TEST_ASSERT_EQUAL(0,checkIDRange(11));
+}
+
+/*Test Function to check id 8 player names are displayed*/
+void test_displayTeam(void)
+{
+  TEST_ASSERT_EQUAL(SUCCESS,displayTeam(0)); 
+  TEST_ASSERT_EQUAL(FAILURE,displayTeam(8)); 
+  TEST_ASSERT_EQUAL(FAILURE,displayTeam(-1)); 
+  TEST_ASSERT_EQUAL(FAILURE,displayTeam(1)); 
 }
 
 void test_welcome(void)
