@@ -80,7 +80,7 @@ int validateID(int p_id,int x,int availibility)
         return 1;
     }
     else{
-        return 0;
+        return -1;
     }
 }
 
