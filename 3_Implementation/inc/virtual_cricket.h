@@ -37,7 +37,7 @@ error_t welcome();
  * @param player 
  * @param totalPlayers 
  */
-error_t displayPoolPlayers(char* player[16],int totalPlayers);
+error_t displayPoolPlayers(int totalPlayers);
 
 /**
  * @brief 
