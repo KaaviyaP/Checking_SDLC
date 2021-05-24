@@ -11,6 +11,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "virtual_cricket.h"
+
+//Variables used
   int maxBallss =6;
   char batsman_name[50]="Virat";
   int batsman_runsScored = 32;
@@ -26,31 +29,25 @@
   int bowlingTeam_totalRunsScored = 52;
   int playersPerTeamm= 4;
   int isFirstInningss =1;
-  /**
-   * @brief Displays the scorecard
-   * 
-   */
+ 
+// Function to display the scorecard
 void showScoreCard() {
     
-   printf("\n\t\t\t\t|=============================== BATTING STATS ================================|"); 
-   printf("\n\t\t\t\t____________________________");
-   printf("\n\t\t\t\t  %s :  %d  (  %d  )",batsman_name,batsman_runsScored,batsman_ballsPlayed);
-   printf("\n\t\t\t\t_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _");
-   printf("\n\t\t\t\t  %s  :  %d  -  %d",battingTeam_teamName,battingTeam_totalRunsScored,battingTeam_wicketsLost);
-   printf("\n\t\t\t\t____________________________");
-   printf("\n\t\t\t\t|=============================== BOWLING STATS ================================|");
-   printf("\n\t\t\t\t____________________________");
-   printf("\n\t\t\t\t  %s   : %d  (  %d  )",bowler_name,bowler_runsGiven,bowler_ballsBowled);
-   printf("\n\t\t\t\t_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _");
-   printf("\n\t\t\t\t %s  :  %d  (  %d  )",bowlingTeam_teamName,battingTeam_totalRunsScored,bowlingTeam_totalBallsBowled);
-   printf("\n\t\t\t\t____________________________");
+   printf("\n|=============================== BATTING STATS ================================|"); 
+   printf("\n  %s :  %d  (  %d  )",batsman_name,batsman_runsScored,batsman_ballsPlayed);
+   printf("\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _");
+   printf("\n  %s  :  %d  -  %d",battingTeam_teamName,battingTeam_totalRunsScored,battingTeam_wicketsLost);
+   printf("\n________________________________________________________________________________");
+   printf("\n|=============================== BOWLING STATS ================================|");
+   printf("\n________________________________________________________________________________");
+   printf("\n  %s   : %d  (  %d  )",bowler_name,bowler_runsGiven,bowler_ballsBowled);
+   printf("\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _");
+   printf("\n %s  :  %d  (  %d  )",bowlingTeam_teamName,battingTeam_totalRunsScored,bowlingTeam_totalBallsBowled);
+   printf("\n_________________________________________________________________________________");
 
 }
-/**
- * @brief  Validation of Innings
- * 
- * @return int 
- */
+
+// Function to Validate the innings
 int validateInnings() {
     
     if(isFirstInningss) {
@@ -93,49 +90,6 @@ int validateInnings() {
     return 1;
 }
 
-
-
-/**
- * @brief 
- * Sort the array
- * 
- * @param arr_name 
- * @param count 
- * @param size 
- * @param new_size 
- */
-void sort_array(int*arr_name, int *count,int size, int*new_size);
-/**
- * @brief Merging the arrays
- * 
- * @param arr_name 
- * @param left 
- * @param right 
- * @param count 
- * @param count_left 
- * @param count_right 
- * @param left_size 
- * @param right_size 
- * @param new_size 
- */
-void merge_array(int*arr_name, int*left,int*right, int *count, int*count_left,int*count_right, int left_size, int right_size, int*new_size);
-/**
- * @brief Get the position object
- * 
- * @param arr_name 
- * @param num 
- * @param size 
- * @return int 
- */
-int get_position(int*arr_name, int num, int size);
-/**
- * @brief Median of array
- * 
- * @param arr_name 
- * @param size 
- * @return int 
- */
-int median_of_array(int*arr_name, int size);
 /**
  * The Sub part is a sub game played between 2 players each selected between the rival teams.
  * This is a two-player game where there are a certain number of stacks of candies.
@@ -148,7 +102,6 @@ int median_of_array(int*arr_name, int size);
  * We need to find the continuous subsequences of candies stacks that will make Tom win if both of them play optimally. 
  * The number of candies of each stack will be recovered after the game ends for each subsequences.
  */
-
 void rivalGame(){
 
   int num_of_stacks=5;
@@ -162,32 +115,22 @@ void rivalGame(){
   int *count_even,*count_odd;
   int **even_table,**odd_table;
   long long ans=0;
-  
-  
+   
   //scanf("%d",&num_of_stacks);
-  
   dyn_ptr=(int*)malloc(num_of_stacks*sizeof(int));
-  
   ddyn_ptr=(int*)malloc((num_of_stacks-1)*sizeof(int));
-  
   evensize=oddsize=(num_of_stacks-1)/2;
-  
   evensize+=(num_of_stacks-1)%2;
-  
   dseven=(int*)malloc(evensize*sizeof(int));
-  
   dsodd=(int*)malloc(oddsize*sizeof(int));
-  
   sort_even=(int*)malloc(evensize*sizeof(int));
-  
   sort_odd=(int*)malloc(oddsize*sizeof(int));
-  
   count_even=(int*)malloc(evensize*sizeof(int));
-  
   count_odd=(int*)malloc(oddsize*sizeof(int));
- int arr[5] = {1,1,2,2,3};
+  int arr[5] = {1,1,2,2,3};
   int c=0;
- for(iterator_first=0;iterator_first<num_of_stacks;iterator_first++)
+
+  for(iterator_first=0;iterator_first<num_of_stacks;iterator_first++)
      *(dyn_ptr+iterator_first)=arr[c++];
     
   for(iterator_first=0;iterator_first<num_of_stacks-1;iterator_first++){
@@ -205,6 +148,7 @@ void rivalGame(){
     else
       dseven[iterator_first/2]=dseven[iterator_first/2-1]^ddyn_ptr[iterator_first];
   }
+
   for(iterator_first=0;iterator_first<evensize;iterator_first++){
     sort_even[iterator_first]=dseven[iterator_first];
     count_even[iterator_first]=1;
@@ -216,7 +160,6 @@ void rivalGame(){
   }
   
   sort_array(sort_even,count_even,evensize,&sort_evensize);
-  
   sort_array(sort_odd,count_odd,oddsize,&sort_oddsize);
   
   even_table=(int**)malloc(sort_evensize*sizeof(int*));
@@ -234,12 +177,14 @@ void rivalGame(){
     odd_table[iterator_first][0]=0;
   }
   
-  for(iterator_first=0;iterator_first<evensize;iterator_first++){
+  for(iterator_first=0;iterator_first<evensize;iterator_first++)
+  {
     iterator_second=get_position(sort_even,dseven[iterator_first],sort_evensize);
     
     even_table[iterator_second][++even_table[iterator_second][0]]=iterator_first;
   }
-  for(iterator_first=0;iterator_first<oddsize;iterator_first++){
+  for(iterator_first=0;iterator_first<oddsize;iterator_first++)
+  {
     iterator_second=get_position(sort_odd,dsodd[iterator_first],sort_oddsize);
     
     odd_table[iterator_second][++odd_table[iterator_second][0]]=iterator_first;
@@ -281,7 +226,7 @@ void rivalGame(){
       }
     }
   ans=((long long)num_of_stacks)*(num_of_stacks-1)/2-ans;
-  printf("\n|==========================RIVAL GAME==================================|\n");
+  printf("\n|================================RIVAL GAME======================================|\n");
   printf("\nRIVAL GAME started between teams: %s and %s\n",battingTeam_teamName,bowlingTeam_teamName);
   printf("\nPlayers chosen from either teams are %s and %s\n",batsman_name,bowler_name);
   
@@ -300,6 +245,9 @@ void rivalGame(){
   free(even_table);free(odd_table);
   return;
 }
+
+
+// Function to sort the array
 void sort_array(int*arr_name,int *count,int size,int*new_size){
   if (size < 2){
     (*new_size)=size;
@@ -329,6 +277,8 @@ void sort_array(int*arr_name,int *count,int size,int*new_size){
   free(count_right);
   return;
 }
+
+// Function to merge the arrays
 void merge_array(int*arr_name,int*left,int*right,int *count,int*count_left,int*count_right,int left_size, int right_size,int*new_size){
   int iterator_first = 0, iterator_second = 0,index=0;
   while (iterator_first < left_size|| iterator_second < right_size) {
@@ -357,6 +307,8 @@ void merge_array(int*arr_name,int*left,int*right,int *count,int*count_left,int*c
   (*new_size)=index;
   return;
 }
+
+// Function to get the position object
 int get_position(int*arr_name,int num,int size){
   if(size==0)
     return 0;
@@ -365,6 +317,8 @@ int get_position(int*arr_name,int num,int size){
   else
     return get_position(arr_name,num,(size-1)>>1);
 }
+
+// Function to get the median arrray
 int median_of_array(int*arr_name,int size){
   return arr_name[(size-1)>>1];
 }
