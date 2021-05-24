@@ -44,7 +44,7 @@ struct Tuple {
 //Function declarations
 error_t welcome();
 error_t displayPoolPlayers(int totalPlayers);
-char *defineplayers(int totalPlayers);
+error_t defineplayers(int totalPlayers);
 struct teams createTeam();
 void start();
 void showScoreCard();
