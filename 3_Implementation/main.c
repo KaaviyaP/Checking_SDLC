@@ -1,3 +1,12 @@
+/**
+ * @file main.c
+ * @brief 
+ * @version 0.1
+ * @date 2021-05-24
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -15,6 +24,7 @@ struct players{
         int runsGiven;
         int wicketsTaken;
 };
+
 //Structure to store all the Team A details
 struct teamA{
     struct players PA1;
@@ -23,6 +33,7 @@ struct teamA{
     struct players PA4;
     struct players captainA;
 };
+
 //Structure to store all the Team B details
 struct teamB{
     struct players PB1;
@@ -31,15 +42,18 @@ struct teamB{
     struct players PB4;
     struct players captainB;
 };
+
 //Structure for Team A,B
 struct teams{
     struct teamA A;
     struct teamB B;
 };
+
 //Structure for Toss details
 struct Tuple {
     char wonteam[50],choice[50];
 };
+
 
 //Function declarations
 error_t welcome();
@@ -80,8 +94,8 @@ int main()
      
     //Feature 4
     start(t,toss);
-   
-    //Feature 5 
+
+    //Feature 5
     showScoreCard();
     validateInnings();
     rivalGame();
