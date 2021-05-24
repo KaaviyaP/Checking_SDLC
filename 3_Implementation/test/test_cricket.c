@@ -5,7 +5,7 @@
 
 /* Prototypes for all the test functions */
 void test_defineplayers(void);
-void test_validateID(void);
+void test_validateeID(void);
 void test_checkIDRange(void);
 void test_displayTeam(void);
 void test_welcome(void);
@@ -30,7 +30,7 @@ int main()
 
 /* Run Test functions */
   RUN_TEST(test_defineplayers);
-  RUN_TEST(test_validateID);
+  RUN_TEST(test_validateeID);
   RUN_TEST(test_checkIDRange);
   RUN_TEST(test_displayTeam);
   
@@ -73,7 +73,7 @@ void test_defineplayers(void)
 }
 
 /* Test function to check validateID */ 
-void test_validateID(void) {
+void test_validateeID(void) {
   TEST_ASSERT_EQUAL(1, validateID(1,1,1));
   TEST_ASSERT_EQUAL(1, validateID(5,5,1));
   TEST_ASSERT_EQUAL(1, validateID(8,8,1));
