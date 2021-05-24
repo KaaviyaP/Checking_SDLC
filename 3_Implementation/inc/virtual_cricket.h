@@ -34,7 +34,6 @@ error_t welcome();
 /**
  * @brief 
  * 
- * @param player 
  * @param totalPlayers 
  */
 error_t displayPoolPlayers(int totalPlayers);
@@ -70,7 +69,7 @@ int validateID(int p_id,int x,int availibility);
  * @brief 
  * 
  */
-void defineplayers();
+const char* defineplayers(int totalPlayers);
 
 /**
  * @brief Create a Team object
