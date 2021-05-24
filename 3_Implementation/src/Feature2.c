@@ -75,7 +75,7 @@ int checkIDRange(int x)
 // Function to validate player IDs
 int validateID(int p_id,int x,int availibility)
 {
-    if(p_id==x && availibility==1)
+    if(p_id==x && availibility==1 && p_id>=1 && p_id<=8)
     {
         return 1;
     }
