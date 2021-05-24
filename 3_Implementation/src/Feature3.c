@@ -1,10 +1,17 @@
+/**
+ * @file Feature3.c
+ * @author K.Nagasowmika ()
+ * @brief 
+ * @version 0.1
+ * @date 22-05-2021
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include<time.h>
-#include<stdlib.h>
 #include "virtual_cricket.h"
-
 struct players{
         char name[50];
         int id;  
@@ -33,8 +40,26 @@ struct teams{
     struct teamA A;
     struct teamB B;
 };
- 
+int checktossTeam(char t[50])
+{
+  if((strcmp(t,"TeamA")==0) || (strcmp(t,"TeamB")==0)){
+            return 1;
+        }
+  else{
+            return 0;
+        }
+}
 
+int checktossChoice(char c[10])
+{
+   if((strcmp(c,"BAT")==0) || (strcmp(c,"BOWL")==0))
+        {
+            return 1;
+        }
+        else{
+            return 0;
+        }
+}
 
 struct Tuple {
 
@@ -100,28 +125,6 @@ struct Tuple GetPlayerToss(char TeamA[],char TeamB[],struct teams t)
   }
   return retstr;
 }
-
-int checktossTeam(char t[50])
-{
-  if((strcmp(t,"TeamA")==0) || (strcmp(t,"TeamB")==0)){
-            return 1;
-        }
-  else{
-            return 0;
-        }
-}
-
-int checktossChoice(char c[10])
-{
-   if((strcmp(c,"BAT")==0) || (strcmp(c,"BOWL")==0))
-        {
-            return 1;
-        }
-        else{
-            return 0;
-        }
-}
-
 char* getChoice(char winner[],char loser[])
 {
     int batorbowl;
@@ -146,3 +149,4 @@ char* getChoice(char winner[],char loser[])
           }
      return "";
 }
+
