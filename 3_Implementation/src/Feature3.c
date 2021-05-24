@@ -101,14 +101,12 @@ struct Tuple GetPlayerToss(char TeamA[],char TeamB[],struct teams t)
   return retstr;
 }
 
-int checktossTeam(char t[10])
+int checktossTeam(char t[50])
 {
-  
-  if(t=="TeamA" || t=="TeamB")
-        {
+  if((strcmp(t,"TeamA")==0) || (strcmp(t,"TeamB")==0)){
             return 1;
         }
-        else{
+  else{
             return 0;
         }
 }
