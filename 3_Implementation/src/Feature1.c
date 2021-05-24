@@ -1,10 +1,20 @@
+/**
+ * @file Feature1.c
+ * @author Shoda Pratheep Kumar Reddy (shoda.reddy@ltts.com)
+ * @brief Display the Instuctions and Pool of Player details
+ * @version 0.1
+ * @date 2021-05-24
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 #include<time.h>
-
 #include "virtual_cricket.h"
 
+// Structure to store all the player details
 struct players{
         char name[50];
         int id;  
@@ -15,6 +25,7 @@ struct players{
         int wicketsTaken;
 };
 
+//Structure to store all the Team A details
 struct teamA{
     struct players PA1;
     struct players PA2;
@@ -23,6 +34,7 @@ struct teamA{
     struct players captainA;
 };
 
+//Structure to store all the Team B details
 struct teamB{
     struct players PB1;
     struct players PB2;
@@ -31,19 +43,20 @@ struct teamB{
     struct players captainB;
 };
 
+//Structure for Team A,B
 struct teams{
     struct teamA A;
     struct teamB B;
 };
 
+// Function to get team player details
 struct teams getdetails()
 {
 struct teams t;
 return t;
-
 }
 
-
+// Function to display Instructions of the game
 error_t welcome(){ 
     
     
@@ -57,13 +70,14 @@ error_t welcome(){
     printf("=========================================== RULES =============================================|\n");
     printf("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|\n");
     printf("                                                                                               |\n");
-    printf("|1. You have to form Two teams.Select 4 players for each team from the given pool of  players|\n");
+    printf("|1. You have to form Two teams.Select 4 players for each team from the given pool of  players  |\n");
     printf("|2. Win the toss and select what you will do batting or bowling.                               |\n");
     printf("|3. There will be 6 balls in each inning.                                                      |\n");
     
     return SUCCESS;
 }
 
+// Function to display all the members of the pool
 error_t displayPoolPlayers(int totalPlayers) 
 {
     char* player[8];   
@@ -95,16 +109,17 @@ error_t displayPoolPlayers(int totalPlayers)
     return SUCCESS;
 }
 
+// Function to return only an Integer value
 int takeIntegerOnly() 
 {
     int i; 
         
-    while(scanf("%d", &i)==0) //if scanf failed to scan an integer
-{
-    printf("Invalid input. Try again\n");
-    int c;
-    while((c=getchar())!='\n' && c!=EOF); //clear the stdin
-}
+    while(scanf("%d", &i)==0) /*if scanf failed to scan an integer*/
+    {
+        printf("Invalid input. Try again\n");
+        int c;
+        while((c=getchar())!='\n' && c!=EOF); /*clear the stdin*/
+    }
     
     return i;
 }
