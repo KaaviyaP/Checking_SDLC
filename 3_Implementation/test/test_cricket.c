@@ -74,13 +74,13 @@ void test_defineplayers(void)
 
 /* Test function to check validateID */ 
 void test_validateeID(void) {
-  TEST_ASSERT_EQUAL(1, validateID(1,1,1));
-  TEST_ASSERT_EQUAL(1, validateID(5,5,1));
-  TEST_ASSERT_EQUAL(1, validateID(8,8,1));
-  TEST_ASSERT_EQUAL(-1, validateID(1,1,0));
-  TEST_ASSERT_EQUAL(-1, validateID(5,7,1));
-  TEST_ASSERT_EQUAL(-1, validateID(9,9,1));
-  TEST_ASSERT_EQUAL(-1, validateID(11,11,0));
+  TEST_ASSERT_EQUAL(1, validateeID(1,1,1));
+  TEST_ASSERT_EQUAL(1, validateeID(5,5,1));
+  TEST_ASSERT_EQUAL(1, validateeID(8,8,1));
+  TEST_ASSERT_EQUAL(-1, validateeID(1,1,0));
+  TEST_ASSERT_EQUAL(-1, validateeID(5,7,1));
+  TEST_ASSERT_EQUAL(-1, validateeID(9,9,1));
+  TEST_ASSERT_EQUAL(-1, validateeID(11,11,0));
 
 }
 
