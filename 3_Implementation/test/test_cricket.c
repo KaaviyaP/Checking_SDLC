@@ -59,6 +59,7 @@ void test_defineplayers(void)
   TEST_ASSERT_EQUAL(SUCCESS,defineplayers(8));
   TEST_ASSERT_EQUAL(FAILURE,defineplayers(9));
   TEST_ASSERT_EQUAL(FAILURE,defineplayers(7));
+  TEST_ASSERT_EQUAL(FAILURE,defineplayers(-1));
 }
 
 /* Test function to check validateID */ 
