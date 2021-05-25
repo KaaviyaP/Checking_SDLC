@@ -1,7 +1,7 @@
 /**
  * @file Feature4.c
  * @author Harsh Dubey(harsh.dubey@ltts.com)
- * @brief Used to Star the Match between the team
+ * @brief Used to Start the Match between the teams
  * @version 0.1
  * @date 2021-05-24
  * 
@@ -16,7 +16,7 @@
 #include "virtual_cricket.h"
 
 /*Variables used*/
-int isFirstInnings = 0;
+
 int netbatsmanrun=0;
 int playersPerTeam = 4;
 int batsmanrun=0;
@@ -25,25 +25,27 @@ int ballsplayed=0;
 int totalballsbawled=0;
 int bowlsbawled=0;
 int runGiven=0;
-int wicketlost=0;
 int wickettaken=0;
-int maxBalls = 6;
 int totalPlayers = 11;
 int count=0;
+int battingTeam_totalRunsScored;
+int bowlingTeam_totalRunsScored;
+int isFirstInnings = 0;
+int wicketlost=0;
+int maxBalls = 6;
 
 
-// Structure to store all the player details
+/**
+ * @brief Structure to store all the player details
+ * 
+ */
 struct players{
         char name[50];
-        int id;  
-        int runsScored;
-        int ballsPlayed;
-        int ballsBowled;
-        int runsGiven;
-        int wicketsTaken;
 };
-
-//Structure to store all the Team A details
+/**
+ * @brief Structure to store all the Team A details
+ * 
+ */
 struct teamA{
     struct players PA1;
     struct players PA2;
@@ -52,7 +54,10 @@ struct teamA{
     struct players captainA;
 };
 
-//Structure to store all the Team B details
+/**
+ * @brief Structure to store all the Team B details
+ * 
+ */
 struct teamB{
     struct players PB1;
     struct players PB2;
@@ -61,20 +66,31 @@ struct teamB{
     struct players captainB;
 };
 
-//Structure for Team A,B
+/**
+ * @brief Structure for Team A,B
+ * 
+ */
 struct teams{
     struct teamA A;
     struct teamB B;
 };
 
-// Structure for storing Toss winner and winner's choice
+/**
+ * @brief Structure for storing Toss winner and winner's choice
+ * 
+ */
 struct Tuple {
 
     char wonteam[50],choice[50];
 };
 struct Tuple toss;
 
-// Function to pass the toss winning team to the first Inning function
+/**
+ * @brief Function to pass the toss winning team to the first Inning function
+ * 
+ * @param t 
+ * @param toss 
+ */
 void start(struct teams t,struct Tuple toss)
 {
 	char TeamA[4][50];
@@ -107,7 +123,14 @@ void start(struct teams t,struct Tuple toss)
     }
 }
 
-// Function to start the first innings
+/**
+ * @brief Function to start the first innings
+ * 
+ * @param TeamA 
+ * @param TeamB 
+ * @param maxballs 
+ */
+
 void startFirstInnings(char TeamA[4][50],char TeamB[4][50],int maxballs) {
     
     
@@ -119,8 +142,14 @@ void startFirstInnings(char TeamA[4][50],char TeamB[4][50],int maxballs) {
 	isFirstInnings=1;
     initialisingPlayers(TeamA,TeamB,maxBalls);
 }
+/**
+ * @brief Function for Initialising the players
+ * 
+ * @param TeamA 
+ * @param TeamB 
+ * @param maxballs 
+ */
 
-// Function for Initialising the players
 void initialisingPlayers(char TeamA[4][50],char TeamB[4][50],int maxballs){
 	char batsman[50];
 	char bowler[50];
@@ -132,9 +161,16 @@ void initialisingPlayers(char TeamA[4][50],char TeamB[4][50],int maxballs){
     
 }
 
-// Function to start the second Innings
+/**
+ * @brief Function to start the second Innings
+ * 
+ * @param TeamA 
+ * @param TeamB 
+ * @param maxballs 
+ */
 void startSecondInnings(char TeamA[4][50],char TeamB[4][50],int maxballs ) {
     
+    isFirstInnings=0;
     printf("|                                                                                               |\n");
     printf("|===================================== SECOND-INNINGS-STARTS ===================================|\n");
     printf("|_|\n");
@@ -151,8 +187,17 @@ void startSecondInnings(char TeamA[4][50],char TeamB[4][50],int maxballs ) {
     count++;
     initialisingPlayers(TeamA,TeamB,maxballs);
 }
+/**
+ * @brief Function to start the play
+ * 
+ * @param TeamA 
+ * @param TeamB 
+ * @param batsman 
+ * @param bowler 
+ * @param maxballs 
+ * @return int 
+ */
 
-// Function to start the play
 int letsPlay(char TeamA[4][50],char TeamB[4][50],char batsman[50],char bowler[50],int maxballs){
 	int i;
 	if(maxballs>0)
@@ -176,23 +221,39 @@ int letsPlay(char TeamA[4][50],char TeamB[4][50],char batsman[50],char bowler[50
 	}
 }
 printf("\t\t\t\tTEAM B SCORED %d\n",neteamrun);/*displaying individual batsman run*/
+showScoreCard(batsman,netbatsmanrun,ballsplayed,neteamrun,wicketlost,bowler,runGiven,bowlsbawled,totalballsbawled,TeamA,TeamB);
+validateInnings(battingTeam_totalRunsScored,bowlingTeam_totalRunsScored,isFirstInnings,wicketlost,maxBalls,TeamA,TeamB,batsman,bowler);
 }
 
-// Function to start batting 
+/**
+ * @brief Function to start bat
+ * 
+ * @param TeamA 
+ * @param TeamB 
+ * @param batsman 
+ * @param bowler 
+ * @return int 
+ */
 int bat(char TeamA[4][50],char TeamB[4][50],char batsman[50],char bowler[50])
 {
 
 printf("\t\t\t\tpress Enter to start batting\n");
  while((getchar())!='\n');
-
- //batsman status
-srand(time(NULL)); 
+/**
+ * @brief batsman status
+ * 
+ * @return * batsman 
+ */
+srand(time(NULL));
 batsmanrun=rand()%7;/*batsmanrun per bowl*/
 netbatsmanrun+=batsmanrun;
 neteamrun+=batsmanrun;
 ballsplayed+=1;
 
-//bowler status
+/**
+ * @brief bowler status
+ * 
+ */
 bowlsbawled+=1;
 runGiven+=batsmanrun;
 totalballsbawled+=1;
@@ -225,8 +286,13 @@ else{
 printf("Runs = %d\n",batsmanrun);
 }
 
+bowlingTeam_totalRunsScored = neteamrun;
+
 if((totalballsbawled==maxBalls)||(wicketlost==4)){
+    battingTeam_totalRunsScored =  neteamrun;
 	printf("\t\t\t\tTEAM A SCORED %d\n",neteamrun);/*displaying individual batsman run*/
+    showScoreCard(batsman,netbatsmanrun,ballsplayed,neteamrun,wicketlost,bowler,runGiven,bowlsbawled,totalballsbawled,TeamA,TeamB);
+	validateInnings(battingTeam_totalRunsScored, bowlingTeam_totalRunsScored,isFirstInnings,wicketlost,maxBalls,TeamA,TeamB,batsman,bowler);
 	startSecondInnings(TeamB,TeamA,maxBalls);
 }
 
