@@ -1,13 +1,14 @@
 /**
  * @file Feature2.c
- * @author Kaaviya Perumal()
- * @brief 
+ * @author Kaaviya Perumal(kaaviya.perumal@ltts.com)
+ * @brief Creating Teams,defining its players and displaying them
  * @version 0.1
  * @date 2021-05-24
  * 
  * @copyright Copyright (c) 2021
  * 
  */
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -15,7 +16,10 @@
 #include<stdlib.h>
 #include "virtual_cricket.h"
 
-// Structure to store all the player details
+/**
+ * @brief Structure to store all the player details
+ * 
+ */
 struct players{
         char name[50];
         int id;  
@@ -25,8 +29,10 @@ struct players{
         int runsGiven;
         int wicketsTaken;
 };
-
-//Structure to store all the Team A details
+/**
+ * @brief Structure to store all the Team A details
+ * 
+ */
 struct teamA{
     struct players PA1;
     struct players PA2;
@@ -35,7 +41,10 @@ struct teamA{
     struct players captainA;
 };
 
-//Structure to store all the Team B details
+/**
+ * @brief Structure to store all the Team B details
+ * 
+ */
 struct teamB{
     struct players PB1;
     struct players PB2;
@@ -44,13 +53,23 @@ struct teamB{
     struct players captainB;
 };
 
-//Structure for Team A,B
+/**
+ * @brief Structure for Team A,B
+ * 
+ */
 struct teams{
     struct teamA A;
     struct teamB B;
 };
 
-// Function to generate IDs
+/**
+ * @brief Function to generate IDs
+ * 
+ * @param lower 
+ * @param upper 
+ * @param count 
+ * @return int 
+ */
 int getID(int lower, int upper, int count)
 {
         int id = (rand() %
@@ -58,7 +77,12 @@ int getID(int lower, int upper, int count)
         return id;
 }
 
-// Function to check if IDs are between 1-8
+/**
+ * @brief Function to check if IDs are between 1-8
+ * 
+ * @param x 
+ * @return int 
+ */
 int checkIDRange(int x)
 {
     if(x>=1 && x<=8)
@@ -72,10 +96,19 @@ int checkIDRange(int x)
     
 }
 
-// Function to validate player IDs
+/**
+ * @brief Function to validate player IDs
+ * 
+ * @param p_id 
+ * @param x 
+ * @param availibility 
+ * @return int 
+ */
 int validateID(int p_id,int x,int availibility)
 {
-    if(p_id==x && availibility==1)
+    int k=checkIDRange(x);
+    int v=validateeID(p_id,x,availibility);
+    if(p_id==x && availibility==1 && k!=0 && v!=0)
     {
         return 1;
     }
@@ -84,7 +117,14 @@ int validateID(int p_id,int x,int availibility)
     }
 }
 
-// Function to validate player IDs
+/**
+ * @brief Function to validate player IDs for testing
+ * 
+ * @param p_id 
+ * @param x 
+ * @param availibility 
+ * @return int 
+ */
 int validateeID(int p_id,int x,int availibility)
 {
     if(p_id==x && availibility==1 && p_id>=1 && p_id<=8)
@@ -96,7 +136,10 @@ int validateeID(int p_id,int x,int availibility)
     }
 }
 
-//Structure to store status of players
+/**
+ * @brief Structure to store status of players
+ * 
+ */
 typedef struct p {
 char name[50];
 int id;
@@ -112,7 +155,12 @@ player p6;
 player p7;
 player p8;
 
-// Function to define the 8 players
+/**
+ * @brief Function to define the 8 players
+ * 
+ * @param totalPlayers 
+ * @return error_t 
+ */
 error_t defineplayers(int totalPlayers)
 {   
 
@@ -172,7 +220,11 @@ struct teams team;
 struct teams createTeam();
 char pool1[8][50];
 
-// Function to create 2 Teams with 4 player each
+/**
+ * @brief Create a Team objectFunction to create 2 Teams with 4 player each
+ * 
+ * @return struct teams 
+ */
 struct teams createTeam()
 {
     printf("Creating Teams. Please wait....\n\n");
@@ -234,9 +286,6 @@ struct teams createTeam()
         }  
     }
     
-    
-    
-
     team.A.PA1.id=1;
     strcpy(team.A.PA1.name, pool1[0]);
     team.A.PA2.id=2;
@@ -248,7 +297,6 @@ struct teams createTeam()
     team.A.captainA.id=1;
     strcpy(team.A.captainA.name, pool1[0]);
     
-
     team.B.PB1.id=5;
     strcpy(team.B.PB1.name, pool1[4]);
     team.B.PB2.id=6;
@@ -264,7 +312,12 @@ struct teams createTeam()
 
 }
 
-// Function to display teams
+/**
+ * @brief Function to display teams
+ * 
+ * @param n 
+ * @return error_t 
+ */
 error_t displayTeam(int n)
 {   
     int initial=0;
