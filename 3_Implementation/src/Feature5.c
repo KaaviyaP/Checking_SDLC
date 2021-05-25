@@ -1,94 +1,84 @@
 /**
  * @file Feature5.c
  * @author Souhardya Sengupta ()
- * @brief 
+ * @brief Validating Innings and showing Match scorecard. Also,a sub-game RivalGame
  * @version 0.1
  * @date 2021-05-22
  * 
  * @copyright Copyright (c) 2021
  * 
  */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "virtual_cricket.h"
-
-//Variables used
-  int maxBallss =6;
-  char batsman_name[50]="Virat";
-  int batsman_runsScored = 32;
-  int batsman_ballsPlayed = 28;
-  char battingTeam_teamName[50] = "TeamA";
-  int battingTeam_totalRunsScored = 50;
-  int battingTeam_wicketsLost = 3;
-  char bowler_name[50]="Bumrah";
-  int bowler_runsGiven = 45;
-  int bowler_ballsBowled = 24;
-  char bowlingTeam_teamName[50]="TeamB";
-  int bowlingTeam_totalBallsBowled = 36;
-  int bowlingTeam_totalRunsScored = 52;
-  int playersPerTeamm= 4;
-  int isFirstInningss =1;
  
-// Function to display the scorecard
-void showScoreCard() {
+/**
+ * @brief Function to display the scorecard
+ * 
+ */
+void showScoreCard(char batsman_name[50],int batsman_runsScored,int batsman_ballsPlayed,int battingTeam_totalRunsScored,int battingTeam_wicketsLost,char bowler_name[50],int bowler_runsGiven,int bowler_ballsBowled,int bowlingTeam_totalBallsBowled,char TeamA[4][50],char TeamB[4][50]) {
     
-   printf("\n|=============================== BATTING STATS ================================|"); 
-   printf("\n  %s :  %d  (  %d  )",batsman_name,batsman_runsScored,batsman_ballsPlayed);
-   printf("\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _");
-   printf("\n  %s  :  %d  -  %d",battingTeam_teamName,battingTeam_totalRunsScored,battingTeam_wicketsLost);
-   printf("\n________________________________________________________________________________");
-   printf("\n|=============================== BOWLING STATS ================================|");
-   printf("\n________________________________________________________________________________");
-   printf("\n  %s   : %d  (  %d  )",bowler_name,bowler_runsGiven,bowler_ballsBowled);
-   printf("\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _");
-   printf("\n %s  :  %d  (  %d  )",bowlingTeam_teamName,battingTeam_totalRunsScored,bowlingTeam_totalBallsBowled);
-   printf("\n_________________________________________________________________________________");
+   printf("\n\t\t\t\t|=============================== BATTING STATS ================================|"); 
+   printf("\n\t\t\t\t____");
+   printf("\n\t\t\t\t_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _");
+   printf("\n\t\t\t\t    Total Team-Score  %d  -  TOTAL-WICKET-LOST%d",battingTeam_totalRunsScored,battingTeam_wicketsLost);
+   printf("\n\t\t\t\t____");
+   printf("\n\t\t\t\t|=============================== BOWLING STATS ================================|");
+   printf("\n\t\t\t\t____");
+   printf("\n\t\t\t\t  TOTAL-RUN-GIVEN %d  BALLSBOWLED(  %d  )",bowler_runsGiven,bowler_ballsBowled);
+   printf("\n\t\t\t\t_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _");
+   printf("\n\t\t\t\t____");
+batsman_runsScored=0;
+batsman_ballsPlayed=0;
+batsman_name=TeamA[battingTeam_wicketsLost];
 
 }
 
-// Function to Validate the innings
-int validateInnings() {
+
+/**
+ * @brief Function to Validate the innings
+ * 
+ * @return int 
+ */
+int validateInnings(int battingTeam_totalRunsScored, int bowlingTeam_totalRunsScored,int isFirstInnings,int wicketlost,int maxBalls,char TeamA[4][50],char TeamB[4][50],char batsman_name[50],char bowler_name[50]) {
     
-    if(isFirstInningss) {
-        
-        if(battingTeam_wicketsLost == playersPerTeamm || bowlingTeam_totalBallsBowled == maxBallss ) {
-            printf("\t\t\t\t _________________________________ \n");
+    if(isFirstInnings) {
+            printf("\t\t\t\t _____ \n");
             printf("\t\t\t\t|                                                                                               |\n");
             printf("\t\t\t\t|====================================== FIRST-INNINGS-ENDS =====================================|\n");
-            printf("\t\t\t\t|_________________________________|\n");
-            printf("\t\t\t\t|==============================  %s  ===============================|\n",battingTeam_teamName);
-            printf("\t\t\t\t\t\t\t  %d  -  %d \n",battingTeam_totalRunsScored,battingTeam_wicketsLost);
+            printf("\t\t\t\t|_____|\n");
+            printf("\t\t\t\t|==============================  A  ===============================|\n");
+            printf("\t\t\t\t\t\t\t  %d  -  %d \n",battingTeam_totalRunsScored,wicketlost);
             //printf("\t\t\t\t\t\t\t  %d  -  %d \n",battingTeam_totalRunsScored,battingTeam_wicketsLost);
             printf("\n\t\t\t\t\t\t!!! RESULT !!!");
-            printf("\n\t\t\t\t %s  needs to  score  %d   runs" ,bowlingTeam_teamName,battingTeam_totalRunsScored + 1);
-            printf(" in  %d  balls \n",maxBallss);
+            printf("\n\t\t\t\t TEAM-B  needs to  score  %d   runs",battingTeam_totalRunsScored + 1);
+            printf(" in  %d  balls \n",maxBalls);
             return 0;
 
-            }
+            
         }
         else {
             
             if (battingTeam_totalRunsScored > bowlingTeam_totalRunsScored) {	
-                printf(" %s WON THE MATCH \n\n",battingTeam_teamName);
-
-        	    return 0;
+                printf("\n\n\n\t\t\t\tTEAM-A WON THE MATCH \n\n");
+                rivalGame(batsman_name,bowler_name,TeamA,TeamB);
             } 
-            else if (battingTeam_wicketsLost == playersPerTeamm || bowlingTeam_totalBallsBowled == maxBallss) {
-            
-                if (battingTeam_totalRunsScored < bowlingTeam_totalRunsScored) {
-            	printf("%s  WON THE MATCH  \n\n",bowlingTeam_teamName);
+            else if (battingTeam_totalRunsScored < bowlingTeam_totalRunsScored) {
+            	printf("\n\n\n\t\t\t\tTEAM-B  WON THE MATCH  \n\n");
+              rivalGame(batsman_name,bowler_name,TeamB,TeamA);
             	
             } 
             else {
-            	printf("MATCH DRAW \n\n");
+            	printf("\n\n\n\t\t\t\tMATCH DRAW \n\n");
             	
             }
-            return 0;}
-        }
+            }
     
-    return 1;
+    return 0;
 }
+
 
 /**
  * The Sub part is a sub game played between 2 players each selected between the rival teams.
@@ -102,7 +92,7 @@ int validateInnings() {
  * We need to find the continuous subsequences of candies stacks that will make Tom win if both of them play optimally. 
  * The number of candies of each stack will be recovered after the game ends for each subsequences.
  */
-void rivalGame(){
+void rivalGame(char batsman_name[50],char bowler_name[50],char battingTeam_teamName[4][50],char bowlingTeam_teamName[4][50]){
 
   int num_of_stacks=5;
   int evensize,oddsize;
@@ -226,8 +216,7 @@ void rivalGame(){
       }
     }
   ans=((long long)num_of_stacks)*(num_of_stacks-1)/2-ans;
-  printf("\n|================================RIVAL GAME======================================|\n");
-  printf("\nRIVAL GAME started between teams: %s and %s\n",battingTeam_teamName,bowlingTeam_teamName);
+  printf("\n|==========================RIVAL GAME==================================|\n");
   printf("\nPlayers chosen from either teams are %s and %s\n",batsman_name,bowler_name);
   
   if((ans)>=num_of_stacks && num_of_stacks>0){
@@ -246,8 +235,14 @@ void rivalGame(){
   return;
 }
 
-
-// Function to sort the array
+/**
+ * @brief Function to sort the array
+ * 
+ * @param arr_name 
+ * @param count 
+ * @param size 
+ * @param new_size 
+ */
 void sort_array(int*arr_name,int *count,int size,int*new_size){
   if (size < 2){
     (*new_size)=size;
@@ -278,7 +273,19 @@ void sort_array(int*arr_name,int *count,int size,int*new_size){
   return;
 }
 
-// Function to merge the arrays
+/**
+ * @brief Function to merge the arrays
+ * 
+ * @param arr_name 
+ * @param left 
+ * @param right 
+ * @param count 
+ * @param count_left 
+ * @param count_right 
+ * @param left_size 
+ * @param right_size 
+ * @param new_size 
+ */
 void merge_array(int*arr_name,int*left,int*right,int *count,int*count_left,int*count_right,int left_size, int right_size,int*new_size){
   int iterator_first = 0, iterator_second = 0,index=0;
   while (iterator_first < left_size|| iterator_second < right_size) {
@@ -308,7 +315,14 @@ void merge_array(int*arr_name,int*left,int*right,int *count,int*count_left,int*c
   return;
 }
 
-// Function to get the position object
+/**
+ * @brief Function to get the position object
+ * 
+ * @param arr_name 
+ * @param num 
+ * @param size 
+ * @return int 
+ */
 int get_position(int*arr_name,int num,int size){
   if(size==0)
     return 0;
@@ -318,7 +332,13 @@ int get_position(int*arr_name,int num,int size){
     return get_position(arr_name,num,(size-1)>>1);
 }
 
-// Function to get the median arrray
+/**
+ * @brief Function to get the median arrray
+ * 
+ * @param arr_name 
+ * @param size 
+ * @return int 
+ */
 int median_of_array(int*arr_name,int size){
   return arr_name[(size-1)>>1];
 }
