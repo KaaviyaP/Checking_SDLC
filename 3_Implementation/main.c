@@ -84,9 +84,7 @@ int main()
     displayTeam(8);
    
     //Feature 3
-    int r,c;
     struct Tuple toss;
-    r=rand() %2;
     toss=GetPlayerToss("Team A","Team B",t);
     printf("\n**************************************\n");
     printf("\n%s\n",toss.wonteam);
@@ -94,11 +92,6 @@ int main()
      
     //Feature 4
     start(t,toss);
-
-    //Feature 5
-    showScoreCard();
-    validateInnings();
-    rivalGame();
      
      return 0;
 }
