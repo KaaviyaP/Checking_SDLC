@@ -29,14 +29,15 @@ int main()
   UNITY_BEGIN();
 
 /* Run Test functions */
-  RUN_TEST(test_defineplayers);
-  RUN_TEST(test_validateeID);
-  RUN_TEST(test_checkIDRange);
-  RUN_TEST(test_displayTeam);
   
   RUN_TEST(test_welcome);
   RUN_TEST(test_displayPoolPlayers);
   
+  RUN_TEST(test_defineplayers);
+  RUN_TEST(test_validateeID);
+  RUN_TEST(test_checkIDRange);
+  RUN_TEST(test_displayTeam);
+
   RUN_TEST(test_checktossTeam);
   RUN_TEST(test_checktossChoice);
  
