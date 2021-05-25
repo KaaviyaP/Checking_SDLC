@@ -1,9 +1,9 @@
 /**
- * @file Feature2.c
- * @author Kaaviya Perumal(kaaviya.perumal@ltts.com)
- * @brief Creating Teams,defining its players and displaying them
+ * @file Feature3.c
+ * @author K.Nagasowmika ()
+ * @brief Making a toss, get the toss winner and his choice
  * @version 0.1
- * @date 2021-05-24
+ * @date 22-05-2021
  * 
  * @copyright Copyright (c) 2021
  * 
@@ -12,9 +12,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include<time.h>
-#include<stdlib.h>
 #include "virtual_cricket.h"
+
 
 /**
  * @brief Structure to store all the player details
@@ -62,285 +61,142 @@ struct teams{
     struct teamB B;
 };
 
-/**
- * @brief Function to generate IDs
- * 
- * @param lower 
- * @param upper 
- * @param count 
- * @return int 
- */
-int getID(int lower, int upper, int count)
-{
-        int id = (rand() %
-           (upper - lower + 1)) + lower;
-        return id;
-}
 
 /**
- * @brief Function to check if IDs are between 1-8
+ * @brief Structure for storing Toss winner and winner's choice
  * 
- * @param x 
- * @return int 
  */
-int checkIDRange(int x)
+struct Tuple {
+
+    char wonteam[50],choice[50];
+};
+
+/**
+ * @brief Get the Player Toss objectFunction to return results of the toss
+ * 
+ * @param TeamA 
+ * @param TeamB 
+ * @param t 
+ * @return struct Tuple 
+ */
+struct Tuple GetPlayerToss(char TeamA[],char TeamB[],struct teams t)
 {
-    if(x>=1 && x<=8)
-    {
-        return 1;
-    }
+    
+    char choice[50];
+    char str[50];
+    struct Tuple retstr;
+    printf("%s Captain Name: %s\n",TeamA,t.A.captainA.name);
+
+    printf("%s Captain Name: %s\n",TeamB,t.B.captainB.name);
+
+    int player1Choice,player2Choice,toss,player1Toss,batorbowlChoice,player2Score,player1Score;
+      printf("\n%s (Team A) Choose your choice either 1 for head or 2 for tail: ",t.A.captainA.name);
+     scanf("%d",&player1Choice);
+      if(player1Choice==1)
+      {
+      player2Choice=2;
+      printf("%s (Team A) Choice is Head\n",t.A.captainA.name);
+     printf("%s (Team B) Choice is Tail\n",t.B.captainB.name);
+   }
+   else if(player1Choice==2)
+   {
+    player2Choice=1;
+    printf("%s (Team A) Choice is Tail\n",t.A.captainA.name);
+    printf("%s (Team B) Choice is Head\n",t.B.captainB.name);
+   }
+   else
+   {
+    printf("--------------------------------------------Invalid Choice--------------------------------------------\n");
+   }
+    toss=rand()%2;
+    toss=toss+1;
+   if(toss==1)
+    printf("\nToss = Head\n");
     else
+    printf("\nToss = Tail\n");
+    if(toss==player1Choice)
     {
-        return -1;
-    }
+     player1Toss=1;
+    printf("%s Won the Toss\n",TeamA);
+    sprintf(retstr.wonteam, "%s", TeamA);
     
+    sprintf(retstr.choice, "%s", getChoice(TeamA,TeamB));
+    
+    printf("%s",choice);
+     
+    }
+  else if(toss==player2Choice)
+  {
+   player1Toss=2;
+   printf("%s Won the Toss\n",TeamB);
+   sprintf(retstr.wonteam, "%s", TeamB);
+   sprintf(retstr.choice, "%s", getChoice(TeamB,TeamA));
+  }
+  return retstr;
 }
 
 /**
- * @brief Function to validate player IDs
+ * @brief Get the Choice objectFunction to declare the winner's and loser's state of playing
  * 
- * @param p_id 
- * @param x 
- * @param availibility 
- * @return int 
+ * @param winner 
+ * @param loser 
+ * @return char* 
  */
-int validateID(int p_id,int x,int availibility)
+char* getChoice(char winner[],char loser[])
 {
-    int k=checkIDRange(x);
-    int v=validateeID(p_id,x,availibility);
-    if(p_id==x && availibility==1 && k!=0 && v!=0)
-    {
-        return 1;
-    }
-    else{
-        return 0;
-    }
-}
+    int batorbowl;
 
-/**
- * @brief Function to validate player IDs for testing
- * 
- * @param p_id 
- * @param x 
- * @param availibility 
- * @return int 
- */
-int validateeID(int p_id,int x,int availibility)
-{
-    if(p_id==x && availibility==1 && p_id>=1 && p_id<=8)
-    {
-        return 1;
-    }
-    else{
-        return -1;
-    }
-}
-
-/**
- * @brief Structure to store status of players
- * 
- */
-typedef struct p {
-char name[50];
-int id;
-int available;
-} player;
-
-player p1;
-player p2;
-player p3;
-player p4;
-player p5;
-player p6;
-player p7;
-player p8;
-
-/**
- * @brief Function to define the 8 players
- * 
- * @param totalPlayers 
- * @return error_t 
- */
-error_t defineplayers(int totalPlayers)
-{   
-
-    int i1=0;
-    strcpy(p1.name, "Virat");
-    p1.id=1;
-    p1.available=1;
-    i1++;
- 
-    strcpy(p2.name, "Rohit");
-    p2.id=2;
-    p2.available=1;
-    i1++;
-
-    strcpy(p3.name, "Dhoni");
-    p3.id=3;
-    p3.available=1;
-    i1++;
-
-    strcpy(p4.name, "Pant");
-    p4.id=4;
-    p4.available=1;
-    i1++;
-        
-    strcpy(p5.name, "KLRahul");
-    p5.id=5;
-    p5.available=1;
-    i1++;
-        
-    strcpy(p6.name, "Raina");
-    p6.id=6;
-    p6.available=1;
-    i1++;
-        
-    strcpy(p7.name, "Jadeja");
-    p7.id=7;
-    p7.available=1;
-    i1++;
-        
-    strcpy(p8.name, "Sachin");
-    p8.id=8;
-    p8.available=1;
-    i1++;
-        
-    if(totalPlayers==i1)
-    {
-         return SUCCESS;
-    }
+    printf("\n%s choose your choice either to bat or bowl \n",winner);
+    printf("1:BAT 2:BOWL\n");
+    scanf("%d",&batorbowl);
+    if(batorbowl==1)
+       { printf("\n%s decided to bat first \n", winner); 
+        printf("\n%s will Bowl first \n", loser); 
+       return "BAT";
+       }
+    else if(batorbowl==2)
+      { printf("\n%s decided to Bowl first \n", winner); 
+      printf("\n%s will Bat first \n", loser); 
+      
+      return "BOWL";
+      }
     else
-    {
-        return FAILURE;
-    }
-   
+     { 
+         printf("-------------------Invalid choice-----------------------");
+          }
+     return "";
 }
 
-struct teams team;
-struct teams createTeam();
-char pool1[8][50];
-
 /**
- * @brief Create a Team objectFunction to create 2 Teams with 4 player each
+ * @brief Function to check the Teams(A/B) in toss
  * 
- * @return struct teams 
+ * @param t 
+ * @return int 
  */
-struct teams createTeam()
+int checktossTeam(char t[50])
 {
-    printf("Creating Teams. Please wait....\n\n");
-    
-    int i=0;
-    while(i<8)
-    {
-        int lower = 1, upper = 8, count = 1;
-        srand(time(0));
-        int x=getID(lower, upper, count);
-
-        if (validateID(p1.id,x,p1.available))
-        {
-            strcpy(pool1[i],p1.name);
-            p1.available=0;
-            i++;
+  if((strcmp(t,"TeamA")==0) || (strcmp(t,"TeamB")==0)){
+            return 1;
         }
-        else if (validateID(p2.id,x,p2.available))
-        {
-            strcpy(pool1[i],p2.name);
-            p2.available=0;
-            i++;
+  else{
+            return 0;
         }
-        else if (validateID(p3.id,x,p3.available))
-        {
-            strcpy(pool1[i],p3.name);
-            p3.available=0;
-            i++;
-        }
-        else if (validateID(p4.id,x,p4.available))
-        {
-            strcpy(pool1[i],p4.name);
-            p4.available=0;
-            i++;
-        }
-        else if (validateID(p5.id,x,p5.available))
-        {
-           strcpy(pool1[i],p5.name);
-            p5.available=0;
-            i++;
-        }
-        else if (validateID(p6.id,x,p6.available))
-        {
-            strcpy(pool1[i],p6.name);
-            p6.available=0;
-            i++;
-        }
-        else if (validateID(p7.id,x,p7.available))
-        {
-            strcpy(pool1[i],p7.name);
-            p7.available=0;
-            i++;
-        }
-        else if (validateID(p8.id,x,p8.available))
-        {
-            strcpy(pool1[i],p8.name);
-            p8.available=0;
-            i++;
-        }  
-    }
-    
-    team.A.PA1.id=1;
-    strcpy(team.A.PA1.name, pool1[0]);
-    team.A.PA2.id=2;
-    strcpy(team.A.PA2.name, pool1[1]);
-    team.A.PA3.id=3;
-    strcpy(team.A.PA3.name, pool1[2]);
-    team.A.PA4.id=4;
-    strcpy(team.A.PA4.name, pool1[3]);
-    team.A.captainA.id=1;
-    strcpy(team.A.captainA.name, pool1[0]);
-    
-    team.B.PB1.id=5;
-    strcpy(team.B.PB1.name, pool1[4]);
-    team.B.PB2.id=6;
-    strcpy(team.B.PB2.name, pool1[5]);
-    team.B.PB3.id=7;
-    strcpy(team.B.PB3.name, pool1[6]);
-    team.B.PB4.id=8;
-    strcpy(team.B.PB4.name, pool1[7]);
-    team.B.captainB.id=5;
-    strcpy(team.B.captainB.name, pool1[4]);
-
-    return team;
-
 }
 
 /**
- * @brief Function to display teams
+ * @brief Function to check the choice of Batting/Bowling after toss
  * 
- * @param n 
- * @return error_t 
+ * @param c 
+ * @return int 
  */
-error_t displayTeam(int n)
-{   
-    int initial=0;
-    printf("TEAM A :\n");
-    for(int i=0;i<4;i++)
-    {
-        printf("%s\n", pool1+i);
-        initial++;
-    }
-    printf("\n");
-    printf("TEAM B :\n");
-    for(int i=4;i<8;i++)
-    {
-        printf("%s\n", pool1+i);
-        initial++;
-    }
-    printf("\n");
-    if(initial==n){
-     return SUCCESS;
-    }
-    else{
-        return FAILURE;
-    }
-   
+int checktossChoice(char c[10])
+{
+   if((strcmp(c,"BAT")==0) || (strcmp(c,"BOWL")==0))
+        {
+            return 1;
+        }
+        else{
+            return 0;
+        }
 }
 
