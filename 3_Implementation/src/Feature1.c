@@ -1,20 +1,24 @@
 /**
  * @file Feature1.c
  * @author Shoda Pratheep Kumar Reddy (shoda.reddy@ltts.com)
- * @brief Display the Instuctions and Pool of Player details
+ * @brief Display the Instructions and Pool of Player details
  * @version 0.1
  * @date 2021-05-24
  * 
  * @copyright Copyright (c) 2021
  * 
  */
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 #include<time.h>
 #include "virtual_cricket.h"
 
-// Structure to store all the player details
+/**
+ * @brief Structure to store all the player details
+ * 
+ */
 struct players{
         char name[50];
         int id;  
@@ -24,8 +28,10 @@ struct players{
         int runsGiven;
         int wicketsTaken;
 };
-
-//Structure to store all the Team A details
+/**
+ * @brief Structure to store all the Team A details
+ * 
+ */
 struct teamA{
     struct players PA1;
     struct players PA2;
@@ -34,7 +40,10 @@ struct teamA{
     struct players captainA;
 };
 
-//Structure to store all the Team B details
+/**
+ * @brief Structure to store all the Team B details
+ * 
+ */
 struct teamB{
     struct players PB1;
     struct players PB2;
@@ -43,20 +52,31 @@ struct teamB{
     struct players captainB;
 };
 
-//Structure for Team A,B
+/**
+ * @brief Structure for Team A,B
+ * 
+ */
 struct teams{
     struct teamA A;
     struct teamB B;
 };
 
-// Function to get team player details
+/**
+ * @brief Function to get team player details
+ * 
+ * @return struct teams 
+ */
 struct teams getdetails()
 {
 struct teams t;
 return t;
 }
 
-// Function to display Instructions of the game
+/**
+ * @brief Function to display Instructions of the game
+ * 
+ * @return error_t 
+ */
 error_t welcome(){ 
     
     
@@ -77,7 +97,12 @@ error_t welcome(){
     return SUCCESS;
 }
 
-// Function to display all the members of the pool
+/**
+ * @brief Function to display all the members of the pool
+ * 
+ * @param totalPlayers 
+ * @return error_t 
+ */
 error_t displayPoolPlayers(int totalPlayers) 
 {
     char* player[8];   
@@ -109,7 +134,11 @@ error_t displayPoolPlayers(int totalPlayers)
     return SUCCESS;
 }
 
-// Function to return only an Integer value
+/**
+ * @brief Function to return only an Integer value
+ * 
+ * @return int 
+ */
 int takeIntegerOnly() 
 {
     int i; 
