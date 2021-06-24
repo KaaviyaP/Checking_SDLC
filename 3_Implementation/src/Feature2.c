@@ -325,14 +325,14 @@ error_t displayTeam(int n)
     printf("TEAM A :\n");
     for(int i=0;i<4;i++)
     {
-        printf("%s\n", pool1+i);
+        printf("%s\n", pool1[i]);
         initial++;
     }
     printf("\n");
     printf("TEAM B :\n");
     for(int i=4;i<8;i++)
     {
-        printf("%s\n", pool1+i);
+        printf("%s\n", pool1[i]);
         initial++;
     }
     printf("\n");
