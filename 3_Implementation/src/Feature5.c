@@ -221,11 +221,11 @@ void rivalGame(char batsman_name[50],char bowler_name[50],char battingTeam_teamN
   
   if((ans)>=num_of_stacks && num_of_stacks>0){
 
-  printf("|=====%s won the game from %s",batsman_name,battingTeam_teamName);
+  printf("|=====%s won the game from %s",batsman_name,battingTeam_teamName[0]);
   }
   else
   {
-   printf("|=====%s won the game from %s",bowler_name,bowlingTeam_teamName);
+   printf("|=====%s won the game from %s",bowler_name,bowlingTeam_teamName[0]);
   }
   printf("\n|=====Thank you for playing this game\n");
   free(dyn_ptr);free(ddyn_ptr);
